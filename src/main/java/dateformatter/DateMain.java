@@ -12,7 +12,10 @@ public class DateMain {
 	 * 						: null if format is invalid or date does not correspond to sourceFormat
 	 */
 	public static String formatDate(String sourceFormat, String date, String destFormat) {		
-		return null;
+		Date dateWrapper = new Date(date, sourceFormat);
+		DateOptionSelector.setFormatOptions(dateWrapper, destFormat);
+
+		return dateWrapper.toString();
 	}
 	
 	/**
