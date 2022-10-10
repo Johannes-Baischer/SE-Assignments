@@ -1,5 +1,8 @@
 package dateformatter;
 
+import java.text.DateFormat;
+import java.time.LocalDate;
+
 public class DateMain {
 	public static void main(String[] args) {
         
@@ -17,17 +20,9 @@ public class DateMain {
 	 * 						: null if format is invalid or date does not correspond to sourceFormat
 	 */
 	public static String formatDate(String sourceFormat, String date, String destFormat) {		
-		Date dateF;
-		
-		try {
-			dateF = new Date(date, sourceFormat);
+		Date dateF = new Date(date, sourceFormat);
 
-			return dateF.toString(destFormat);
-		} catch (Exception e) {
-			e.printStackTrace();
-
-			return "Error while parsing date!";
-		}
+		return dateF.toString(destFormat);
 	}
 	
 	/**
@@ -45,7 +40,26 @@ public class DateMain {
 	 * 
 	 */
 	public static boolean isDateCorrect(String formatCode, String date) {
-		return false;
+		Date dateF = new Date(date, formatCode);
+
+		if(dateF.isValid() == false){
+			//invalid or wrong input
+			return false;
+		}
+
+		//check basic ranges
+		if(!(1900 <= dateF.getYear() && dateF.getYear() <= 2099)
+		|| !(1 <= dateF.getMonth() && dateF.getMonth() <= 12)){
+			//outside year or month range
+			return false;
+		}
+
+		//check day for given month/year
+		
+
+
+		//passed all citeria
+		return true;
 	}
 
 	/**

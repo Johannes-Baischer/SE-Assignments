@@ -6,44 +6,61 @@ public class Date {
     private int month;
     private int year;
 
+    //invalid flag
+    private boolean isValid;
+
     public Date(int day, int month, int year){
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        setDay(day);
+        setMonth(month);
+        setYear(year);
+        setIsValid(true);
     }
 
     /**
      * Constructor that decodes a dateString with given formatCode
      * @param dateString date to be decoded
      * @param formatCode information about the date format
-     * @throws Exception if the given date cannot be decoded with the given format code
      */
-    public Date(String dateString, String formatCode) throws Exception{
+    public Date(String dateString, String formatCode){
+        setIsValid(true);
         String[] dateComponents = dateString.split("[\\/\\-.]");
 
         if(dateComponents.length != 3){
-            throw new Exception("Given date string is invalid! Not enough components found!"); 
+            setIsValid(false);
+            return;
         }
 
         for(int i = 0; i < formatCode.length(); i++){
-            switch (formatCode.charAt(i)){
+            char c = formatCode.charAt(i);
+
+            switch (c){
                 case 'A':
                     setMonth(Integer.parseInt(dateComponents[0]));
                     setDay(Integer.parseInt(dateComponents[1]));
                     setYear(Integer.parseInt(dateComponents[2]));
-                    return;
+                    break;
 
                 case 'B':
                     setYear(Integer.parseInt(dateComponents[0]));
                     setMonth(Integer.parseInt(dateComponents[1]));
                     setDay(Integer.parseInt(dateComponents[2]));
-                    return;
+                    break;
 
                 case 'C':
                     setDay(Integer.parseInt(dateComponents[0]));
                     setMonth(Integer.parseInt(dateComponents[1]));
                     setYear(Integer.parseInt(dateComponents[2]));
-                    return;
+                    break;
+
+                case '-':
+                case '/':
+                case '.':
+                    int count = dateString.length() - dateString.replace(".", "").length();
+                    if(count != 2){
+                        //seperator isn't found twice
+                        setIsValid(false);
+                    }
+                    break;
             }
         }
     }
@@ -59,6 +76,9 @@ public class Date {
     public int getYear(){ return year; }
     public void setYear(int year){ this.year = year; }
 
+    public boolean isValid(){ return isValid; }
+    public void setIsValid(boolean isValid){ this.isValid = isValid; }
+
 
     /**
      * Formats the date according to a given formatCode
@@ -66,6 +86,12 @@ public class Date {
      * @return date as string eg. 01-01-1900
      */
     public String toString(String formatCode) {
+        if(isValid() == false){
+            //no due to wrong input of specification
+            return "INVALID";
+        }
+
+
         String dateString = "";
         char order = 'X', seperator = 'X';                          //default values for compiler
 
@@ -75,17 +101,18 @@ public class Date {
         
         //decoding formatCode
         for(int i = 0; i < formatCode.length(); i++){
-            switch (formatCode.charAt(i)){
+            char c = formatCode.charAt(i);
+            switch (c){
                 case 'A':
                 case 'B':
                 case 'C':
-                    order = formatCode.charAt(i);
+                    order = c;
                     break;
 
                 case '-':
                 case '/':
                 case '.':
-                    seperator = formatCode.charAt(i);
+                    seperator = c;
                     break;
 
                 case '2':
