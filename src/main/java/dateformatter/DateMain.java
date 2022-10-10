@@ -1,7 +1,12 @@
 package dateformatter;
 
 public class DateMain {
-	
+	public static void main(String[] args) {
+        
+        //Test "formatDate"
+        System.out.println(formatDate("A.2", "10.03.22", "C-4"));
+    }
+
 	/**
 	 * Reformats a date representation
 	 * 
@@ -12,10 +17,17 @@ public class DateMain {
 	 * 						: null if format is invalid or date does not correspond to sourceFormat
 	 */
 	public static String formatDate(String sourceFormat, String date, String destFormat) {		
-		Date dateWrapper = new Date(date, sourceFormat);
-		DateOptionSelector.setFormatOptions(dateWrapper, destFormat);
+		Date dateF;
+		
+		try {
+			dateF = new Date(date, sourceFormat);
 
-		return dateWrapper.toString();
+			return dateF.toString(destFormat);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return "Error while parsing date!";
+		}
 	}
 	
 	/**
