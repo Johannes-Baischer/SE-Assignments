@@ -32,3 +32,39 @@
 Develop a date formatter program according to the comments in the starter code and the definitions in the file Datumsformat.pdf .
 
 ----------------------------------------------------
+## Important note
+The example in the javadoc comments for the method `DateMain.transformDates` contains a mistake. The correct version is provided below.
+
+```java 
+	/**
+	 * Reformats multiple dates from file. Creates new file with the results.
+	 * 
+	 * @param inputFile : name of existing file with three strings per line: source format,date,target format
+	 * @param outputFile: name of new file with the transformed dates
+	 * 		- for a valid input, the corresponding line has the format: target format,date
+	 * 		- for an invalid input, the corresponding output line should consist of the word INVALID
+	 * 		- a valid input is defined exactly as the one for the method formatDate
+	 * @return true if operation successful, false if output file already exists or if file access operations did not succeed 
+	 * 
+	 * Examples of input lines:
+	 * 
+	 * A/4,10/03/2022,B-4b
+	 * C-4,17/12/2000,A/2
+	 * B-2b,22- 8- 5,B-2
+	 * A/4b, 2/29/2099,C/2
+	 * C.4,03.10.2022,A/4b
+	 *
+	 * 
+	 * The corresponding output lines:
+	 * 
+	 * B-4b,2022-10- 3
+	 * INVALID
+	 * B-2,22-08-05
+	 * 29/02/99
+	 * A/4b,10/ 3/2022
+	 * 
+	 */
+	public static boolean transformDates(String inputFile, String outputFile) {
+		return false;
+	}
+```
