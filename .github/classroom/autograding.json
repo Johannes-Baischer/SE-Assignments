@@ -1,19 +1,9 @@
 {
   "tests": [
     {
-      "name": "registerTrustedSource",
-      "setup": "mvn compile",
+      "name": "testFormatDate",
+      "setup": "mvn clean",
       "run": "mvn -Dtest=TestDate#testFormatDate test",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 3
-    },
-    {
-      "name": "spreadNews",
-      "setup": "mvn compile",
-      "run": "mvn -Dtest=TestDate#testCorrectDate test",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -21,8 +11,18 @@
       "points": 4
     },
     {
-      "name": "Blocking words",
-      "setup": "mvn compile",
+      "name": "testCorrectDate",
+      "setup": "mvn clean",
+      "run": "mvn -Dtest=TestDate#testCorrectDate test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "testTransformDates",
+      "setup": "mvn dependency:unpack",
       "run": "mvn -Dtest=TestDate#testTransformDates test",
       "input": "",
       "output": "",
