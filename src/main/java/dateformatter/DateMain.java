@@ -1,10 +1,28 @@
 package dateformatter;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+
 public class DateMain {
 	public static void main(String[] args) {
         
         //Test "formatDate"
-        System.out.println(formatDate("A.2", "10.03.22", "C-4"));
+        System.out.println("Format: \"A.4\", \"00.00.0000\", \"C-2b\": " +
+			formatDate("A.4", "00.00.0000", "C-2b"));
+
+		//Test "isDateCorrect"
+        System.out.println("IsDateCorrect: \"A.4\", \"29.02.2000\": " +
+			isDateCorrect("A.4", "02.30.2000"));
+
+		//Test FileIO
+		System.out.println("transformDates: " +
+			transformDates("C:/GitHub/a1-res-sew22-s1086240_s1054335/input.txt", 
+			"C:/GitHub/a1-res-sew22-s1086240_s1054335/output.txt"));
     }
 
 	/**
@@ -17,17 +35,9 @@ public class DateMain {
 	 * 						: null if format is invalid or date does not correspond to sourceFormat
 	 */
 	public static String formatDate(String sourceFormat, String date, String destFormat) {		
-		Date dateF;
-		
-		try {
-			dateF = new Date(date, sourceFormat);
+		Date dateF = new Date(date, sourceFormat);
 
-			return dateF.toString(destFormat);
-		} catch (Exception e) {
-			e.printStackTrace();
-
-			return "Error while parsing date!";
-		}
+		return dateF.toString(destFormat);
 	}
 	
 	/**
@@ -45,7 +55,55 @@ public class DateMain {
 	 * 
 	 */
 	public static boolean isDateCorrect(String formatCode, String date) {
-		return false;
+		Date dateF = new Date(date, formatCode);
+
+		if(dateF.isValid() == false){
+			//invalid or wrong input
+			return false;
+		}
+
+		int day = Integer.parseInt(dateF.getDay().replace(" ", ""));	//blank leads to parsing error
+		int month = Integer.parseInt(dateF.getMonth().replace(" ", ""));
+		int year = Integer.parseInt(dateF.getYear());
+
+
+		//check basic ranges
+		if(!(1900 <= year && year <= 2099)
+		|| !(1 <= month && month <= 12)
+		|| !(1 <= day && day <= 31)){
+			//outside of basic ranges
+			return false;
+		}
+
+
+		//check day for given month/year
+		boolean isLeapYear = false;
+
+		if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) 
+			isLeapYear = true;
+
+		HashMap<Integer, Integer> rangeOfMonth = new HashMap<Integer, Integer>();
+		rangeOfMonth.put(1, 31);
+		rangeOfMonth.put(2, (isLeapYear ? 29 : 28));
+		rangeOfMonth.put(3, 31);
+		rangeOfMonth.put(4, 30);
+		rangeOfMonth.put(5, 31);
+		rangeOfMonth.put(6, 30);
+		rangeOfMonth.put(7, 31);
+		rangeOfMonth.put(8, 31);
+		rangeOfMonth.put(9, 30);
+		rangeOfMonth.put(10, 31);
+		rangeOfMonth.put(11, 30);
+		rangeOfMonth.put(12, 31);
+
+		if(day > rangeOfMonth.get(month)){
+			//given month has not enough days
+			return false;
+		}
+
+
+		//passed all citeria
+		return true;
 	}
 
 	/**
@@ -76,6 +134,63 @@ public class DateMain {
 	 * 
 	 */
 	public static boolean transformDates(String inputFile, String outputFile) {
-		return false;
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+		String line, formatOutput;
+		String[] args;
+
+		try {
+			File f = new File(outputFile);
+			if(f.exists()){
+				//output already exists
+				return false;
+			}
+
+			br = new BufferedReader(new FileReader("input.txt"));
+			bw = new BufferedWriter(new FileWriter("output.txt"));
+			
+			while ((line = br.readLine()) != null) {
+				args = line.split(",");
+				
+				if(args.length != 3){
+					//inputfile contains invalid line
+					return false;
+				}
+
+				formatOutput = formatDate(args[0], args[1], args[2]);
+
+				if(formatOutput == "INVALID")
+					bw.write(formatOutput);
+				else
+					bw.write(args[2] + "," + formatOutput);
+
+				bw.newLine();
+			}
+
+
+		}catch(Exception ex){
+			//error while opening file
+			return false;
+		}
+		finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+					return false;
+				}
+			}
+			if (bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 }
