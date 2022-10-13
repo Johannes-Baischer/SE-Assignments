@@ -177,7 +177,7 @@ public class Date {
     public String toString(String formatCode) {
         if(isValid() == false){
             //no, due to wrong input of specification
-            return "INVALID";
+            return null;
         }
 
 
@@ -197,7 +197,7 @@ public class Date {
                 case 'C':
                     if(i != 0){
                         //Order option in wrong position
-                        return "INVALID";
+                        return null;
                     }
 
                     order = c;
@@ -208,7 +208,7 @@ public class Date {
                 case '.':
                     if(i != 1){
                         //Seperator option in wrong position
-                        return "INVALID";
+                        return null;
                     }
 
                     seperator = c;
@@ -217,7 +217,7 @@ public class Date {
                 case '2':
                     if(i != 2){
                         //Year format option in wrong position
-                        return "INVALID";
+                        return null;
                     }
 
                     //only get last 2 digits
@@ -227,7 +227,7 @@ public class Date {
                 case '4':
                     if(i != 2){
                         //Year format option in wrong position
-                        return "INVALID";
+                        return null;
                     }
 
                     if(year.length() != 4){
@@ -240,7 +240,7 @@ public class Date {
                 case 'b':
                     if(i != 3){
                         //Blank option in wrong position
-                        return "INVALID";
+                        return null;
                     }
 
                     //replace leading zeros
@@ -254,7 +254,7 @@ public class Date {
 
                 default:
                     //wrong character found
-                    return "INVALID";
+                    return null;
             }
         }
 

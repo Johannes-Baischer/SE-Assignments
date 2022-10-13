@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class DateMain {
 	public static void main(String[] args) {
@@ -16,8 +18,8 @@ public class DateMain {
 			formatDate("A.4", "00.00.0000", "C-2b"));
 
 		//Test "isDateCorrect"
-        System.out.println("IsDateCorrect: \"A.4\", \"29.02.2000\": " +
-			isDateCorrect("A.4", "02.30.2000"));
+        System.out.println("IsDateCorrect: \"A.4\", \"02.29.2000\": " +
+			isDateCorrect("A.4", "02.29.2000"));
 
 		//Test FileIO
 		System.out.println("transformDates: " +
@@ -67,40 +69,20 @@ public class DateMain {
 		int year = Integer.parseInt(dateF.getYear());
 
 
-		//check basic ranges
-		if(!(1900 <= year && year <= 2099)
-		|| !(1 <= month && month <= 12)
-		|| !(1 <= day && day <= 31)){
-			//outside of basic ranges
+		//check specific year range
+		if(!(1900 <= year && year <= 2099)){
 			return false;
 		}
 
-
-		//check day for given month/year
-		boolean isLeapYear = false;
-
-		if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) 
-			isLeapYear = true;
-
-		HashMap<Integer, Integer> rangeOfMonth = new HashMap<Integer, Integer>();
-		rangeOfMonth.put(1, 31);
-		rangeOfMonth.put(2, (isLeapYear ? 29 : 28));
-		rangeOfMonth.put(3, 31);
-		rangeOfMonth.put(4, 30);
-		rangeOfMonth.put(5, 31);
-		rangeOfMonth.put(6, 30);
-		rangeOfMonth.put(7, 31);
-		rangeOfMonth.put(8, 31);
-		rangeOfMonth.put(9, 30);
-		rangeOfMonth.put(10, 31);
-		rangeOfMonth.put(11, 30);
-		rangeOfMonth.put(12, 31);
-
-		if(day > rangeOfMonth.get(month)){
-			//given month has not enough days
+		//check if date exists
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		format.setLenient(false);	//check for date outside range
+		try {
+			format.parse(String.format("%d-%d-%d", year, month, day));
+		} catch (ParseException e) {
+			// Date invalid
 			return false;
 		}
-
 
 		//passed all citeria
 		return true;
