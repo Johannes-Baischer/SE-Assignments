@@ -33,6 +33,8 @@ public class Date {
 
         if((formatCode.length() != 3) && (formatCode.length() != 4)){
             //length of formatcode invalid
+            setIsValid(false);
+            return;
         }
 
         //---------------ORDER
