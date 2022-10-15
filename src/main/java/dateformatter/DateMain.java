@@ -93,8 +93,9 @@ public class DateMain {
 	 * 
 	 * @param inputFile : name of existing file with three strings per line: source format,date,target format
 	 * @param outputFile: name of new file with the transformed dates
-	 * 		- for a correct input date, the corresponding line has the format: target format,date
-	 * 		- for an invalid/incorrect input date (see page 2 in pdf file), the output line should consist of the word INVALID  
+	 * 		- for a valid input, the corresponding line has the format: target format,date
+	 * 		- for an invalid input, the corresponding output line should consist of the word INVALID
+	 * 		- a valid input is defined exactly as the one for the method formatDate
 	 * @return true if operation successful, false if output file already exists or if file access operations did not succeed 
 	 * 
 	 * Examples of input lines:
@@ -111,7 +112,7 @@ public class DateMain {
 	 * B-4b,2022-10- 3
 	 * INVALID
 	 * B-2,22-08-05
-	 * INVALID
+	 * 29/02/99
 	 * A/4b,10/ 3/2022
 	 * 
 	 */
