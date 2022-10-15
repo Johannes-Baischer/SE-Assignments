@@ -122,14 +122,20 @@ public class DateMain {
 		String[] args;
 
 		try {
-			File f = new File(outputFile);
+			File f = new File(inputFile);
+			if(f.exists() == false){
+				//input missing
+				return false;
+			}
+
+			f = new File(outputFile);
 			if(f.exists()){
 				//output already exists
 				return false;
 			}
 
-			br = new BufferedReader(new FileReader("input.txt"));
-			bw = new BufferedWriter(new FileWriter("output.txt"));
+			br = new BufferedReader(new FileReader(inputFile));
+			bw = new BufferedWriter(new FileWriter(outputFile));
 			
 			while ((line = br.readLine()) != null) {
 				args = line.split(",");
@@ -141,8 +147,8 @@ public class DateMain {
 
 				formatOutput = formatDate(args[0], args[1], args[2]);
 
-				if(formatOutput == "INVALID")
-					bw.write(formatOutput);
+				if(formatOutput == null)
+					bw.write("INVALID");
 				else
 					bw.write(args[2] + "," + formatOutput);
 
