@@ -85,3 +85,22 @@ Your method `DateMain.transformDates` will be called with arguments `("Inputs.tx
 If you test your method locally with your own files (which is recommended), you should use filenames different than the ones above, otherwise your files might get overwritten during testing.
 
 ----------------------------------------------------
+
+----------------------------------------------------
+
+## How to run tests locally
+
+In you local repo, run first
+
+>mvn dependency:unpack
+
+This will download two files (in the root folder): `Inputs.txt` and `ExpectedOutputs.txt`
+Then run
+
+>mvn clean test
+
+Your method `DateMain.transformDates` will be called with arguments `("Inputs.txt", "ActualOutputs.txt")`. The corresponding test simply compares the expected and actual outputs.
+
+If you test your method locally with your own files (which is recommended), you should use filenames different than the ones above, otherwise your files might get overwritten during testing.
+
+----------------------------------------------------
