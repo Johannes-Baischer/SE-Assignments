@@ -1,0 +1,140 @@
+{
+  "tests": [
+    {
+      "name": "testInitial stack",
+      "run": "mvn -Dtest=StackTest#testInitial test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 0
+    },
+    {
+      "name": "testNormal stack",
+      "run": "mvn -Dtest=StackTest#testNormal test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 0
+    },
+    {
+      "name": "testOrder stack",
+      "run": "mvn -Dtest=StackTest#testOrder test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testExceptions stack",
+      "run": "mvn -Dtest=StackTest#testExceptions test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testBig stack",
+      "run": "mvn -Dtest=StackTest#testBig test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testInitial bounded stack",
+      "run": "mvn -Dtest=BoundedStackTest#testInitial test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 0
+    },
+    {
+      "name": "testNormal bounded stack",
+      "run": "mvn -Dtest=BoundedStackTest#testNormal test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testOrder bounded stack",
+      "run": "mvn -Dtest=BoundedStackTest#testOrder test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 0
+    },
+    {
+      "name": "testExceptions bounded stack",
+      "run": "mvn -Dtest=BoundedStackTest#testExceptions test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testBig bounded stack",
+      "run": "mvn -Dtest=BoundedStackTest#testBig test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testIndividualMathOps calc",
+      "run": "mvn -Dtest=CalcTest#testIndividualMathOps test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testCalc calc",
+      "run": "mvn -Dtest=CalcTest#testCalc test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testCalc calc",
+      "run": "mvn -Dtest=CalcTest#testCalcInfix test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testInvalidInput calc",
+      "run": "mvn -Dtest=CalcTest#testInvalidInput test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "testInfix2Postfix calc (this test should never fail)",
+      "run": "mvn -Dtest=CalcTest#testInfix2Postfix test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 0
+    }
+
+  ]
+}
