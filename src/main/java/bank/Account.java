@@ -8,6 +8,7 @@ import java.math.BigDecimal;
  * 
  */
 public abstract class Account {
+	protected BigDecimal balance;
 
 	/**
 	 * Withdraws the given amount from the account's balance.

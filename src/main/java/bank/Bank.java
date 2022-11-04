@@ -1,5 +1,5 @@
-//LastName1, FirstName1  //TODO
-//LastName2, FirstName2  //TODO
+//Baischer, Johannes
+//Krall, Daniel
 
 
 package bank;
@@ -8,7 +8,10 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 /**
  * A Bank. This class manages customers (<code>Customer</code>) and their
@@ -33,6 +36,11 @@ import java.util.Optional;
  * 
  */
 public class Bank {
+	Map<String, Customer> customers;
+
+	public Bank() {
+		customers = new TreeMap<String, Customer>();
+	}
 
 	/**
 	 * Creates and registers a new <code>Customer</code> object whose attributes
@@ -44,7 +52,10 @@ public class Bank {
 	 * @return the id of the created and registered customer object
 	 */
 	public String registerCustomer(String firstName, String lastName, Date birthDay) {
-		return "";
+		Customer customer = new Customer(firstName, lastName, birthDay);
+		customers.put(customer.getID(), customer);
+
+		return customer.getID();
 	}
 
 	/**
@@ -58,7 +69,17 @@ public class Bank {
 	 * @return the (possibly empty) collection;
 	 */
 	public Collection<String> getCustomers(String firstName, String lastName, Date birthDay) {
-		return Collections.emptyList();
+		Collection<String> customerIDS = new LinkedList<String>();
+
+		customers.forEach((k,v) -> {
+			if((v.getFirstName().equals(firstName))
+				&& (v.getLastName().equals(lastName))
+				&& (v.getBirthDay().equals(birthDay))){
+					customerIDS.add(k);
+				}
+		});
+
+		return customerIDS;
 	}
 
 	/**
