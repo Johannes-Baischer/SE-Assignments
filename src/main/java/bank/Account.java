@@ -8,6 +8,8 @@ import java.math.BigDecimal;
  * 
  */
 public abstract class Account {
+	private static int runningID = 1;
+
 	protected BigDecimal balance;
 	protected String[] owner;
 	private String id;
@@ -16,10 +18,11 @@ public abstract class Account {
 		this.balance = balance;
         this.owner = owner;
 
+		id = "";
 		for(String o : this.owner){
-			id += o;
+			id += o + "&";
 		}
-		id += System.currentTimeMillis();
+		id += runningID++;
 	}
 
 	/**
@@ -30,10 +33,15 @@ public abstract class Account {
 	 */
 	protected abstract boolean withdraw(BigDecimal amount);
 
+	/**
+	 * Deposits the given amount to the account's balance.
+	 * 
+	 * @param amount the amount to deposit
+	 * @return boolean true iff the deposit operation was successful
+	 */
 	public boolean deposit(BigDecimal amount){
-		balance.add(amount);
-
-		return balance != null;
+		balance = balance.add(amount);
+		return true;
 	}
 
 	/**

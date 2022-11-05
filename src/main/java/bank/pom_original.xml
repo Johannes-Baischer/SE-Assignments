@@ -28,7 +28,7 @@
             <artifactId>Bank_Test</artifactId>
             <classifier>tests</classifier>
             <type>test-jar</type>
-            <version>0.0.1-20221029.190741-1</version>
+            <version>0.0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

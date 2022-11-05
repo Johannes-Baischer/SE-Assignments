@@ -39,6 +39,7 @@ public class Bank {
 
 	public Bank() {
 		customers = new TreeMap<String, Customer>();
+		accounts = new TreeMap<String, Account>();
 	}
 
 	/**
@@ -89,7 +90,12 @@ public class Bank {
 	 *         removed; otherwise false
 	 */
 	public boolean removeAccount(String accountId) {
-		return customers.remove(accountId) != null;
+		if((accountId != null) && (accounts.containsKey(accountId))){
+			accounts.remove(accountId);
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -104,9 +110,12 @@ public class Bank {
 	 *         of the customers is not registered in the bank
 	 */
 	public Optional<String> registerCorporateAccount(String... customerId) {
+		if(customerId == null)
+			return Optional.empty();
+
 		for(String customer : customerId){
-			if(!customers.containsKey(customer))	//customer not registered
-				return Optional.of(null);
+			if((customer == null) || (!customers.containsKey(customer)))	//customer not registered
+				return Optional.empty();
 		}
 
 		Account account = new CorporateAccount(new BigDecimal(0), customerId);
@@ -127,8 +136,8 @@ public class Bank {
 	 *         with the specified id is not registered in the bank
 	 */
 	public Optional<String> registerPersonalAccount(String customerId) {
-		if(!customers.containsKey(customerId))	//customer not registered
-			return Optional.of(null);
+		if((customerId == null) || (!customers.containsKey(customerId)))	//customer not registered
+			return Optional.empty();
 
 		Account account = new PersonalAccount(new BigDecimal(0), customerId);
 		accounts.put(account.getID(), account);
@@ -144,7 +153,10 @@ public class Bank {
 	 *         registered
 	 */
 	public Optional<BigDecimal> getBalance(String accountId) {
-		return Optional.of(accounts.getOrDefault(accountId, new PersonalAccount(null, "")).getBalance());
+		if((accountId == null) || (!accounts.containsKey(accountId)))
+			return Optional.empty();
+
+		return Optional.of(accounts.get(accountId).getBalance());
 	}
 
 	/**
@@ -155,7 +167,16 @@ public class Bank {
 	 * @return true iff the amount was successfully deposited; false otherwise
 	 */
 	public boolean deposit(String accountId, BigDecimal amount) {
-		return accounts.get(accountId).deposit(amount);
+		if((accountId == null) || (amount == null))
+			return false;
+
+		Account acc = accounts.get(accountId);
+		if(acc == null)
+			return false;
+
+		acc.deposit(amount);
+
+		return true;
 	}
 
 	/**
@@ -167,7 +188,15 @@ public class Bank {
 	 * @return true iff the amount was successfully withdrawn; false otherwise
 	 */
 	public boolean withdraw(String accountId, BigDecimal amount) {
-		return accounts.get(accountId).withdraw(amount);
+		if((accountId == null) || (amount == null))
+			return false;
+
+		Account acc = accounts.get(accountId);
+
+		if(acc == null)
+			return false;
+
+		return acc.withdraw(amount);
 	}
 
 	/**
@@ -205,11 +234,16 @@ public class Bank {
 	public Optional<Collection<String>> getAccounts(String customerId) {
 		Collection<String> accountIDs = new LinkedList<String>();
 
-		accounts.forEach((k,v) -> {
-			if(k.equals(customerId))
-			accountIDs.add(k);
-		});
+		if((customerId == null) || (customers.get(customerId) == null))
+			return Optional.empty();
 
+		//go through all owners for all accounts
+		accounts.forEach((k,v) -> {
+			for(String owner : v.owner)
+				if(owner.equals(customerId))
+					accountIDs.add(k);
+		});
+	
 		return Optional.of(accountIDs);
 	}
 
@@ -224,6 +258,11 @@ public class Bank {
 	public Optional<BigDecimal> getTotalBalance(String customerId) {
 		BigDecimal total = new BigDecimal(0);
 		Collection<String> accountIDs;
+
+		//check if customer exists
+		if((customerId == null) || (customers.get(customerId) == null))
+			return Optional.empty();
+
 		
 		//get all accounts for a customer
 		Optional<Collection<String>> accIDsOrEmpty = getAccounts(customerId);
@@ -234,7 +273,7 @@ public class Bank {
 
 
 		for(String accID : accountIDs){
-			total.add(accounts.get(accID).getBalance());
+			total = total.add(accounts.get(accID).getBalance());
 		}
 		
 		return Optional.of(total);

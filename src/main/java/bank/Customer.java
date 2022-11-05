@@ -7,6 +7,8 @@ import java.util.Date;
  *
  */
 public class Customer {
+	private static int runningID = 1;
+
 	private String id;
 	private String firstName, lastName;
 	private Date birthDay;
@@ -20,7 +22,7 @@ public class Customer {
 			firstName + "|" +
 			lastName  + "|" +
 			birthDay  + "|" +
-			System.currentTimeMillis() + "";
+			runningID++;
 	}
 
 	/**

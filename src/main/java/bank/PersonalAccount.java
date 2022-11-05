@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class PersonalAccount extends Account{
     public PersonalAccount(BigDecimal balance, String owner){
-        super(balance, new String[] { owner });
+        super(balance, owner);
     }
 
     @Override
