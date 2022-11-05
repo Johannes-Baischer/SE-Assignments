@@ -1,12 +1,10 @@
 //Baischer, Johannes
 //Krall, Daniel
 
-
 package bank;
 
 import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Map;
@@ -37,6 +35,7 @@ import java.util.TreeMap;
  */
 public class Bank {
 	Map<String, Customer> customers;
+	Map<String, Account> accounts;
 
 	public Bank() {
 		customers = new TreeMap<String, Customer>();
@@ -90,7 +89,7 @@ public class Bank {
 	 *         removed; otherwise false
 	 */
 	public boolean removeAccount(String accountId) {
-		return false;
+		return customers.remove(accountId) != null;
 	}
 
 	/**
@@ -105,7 +104,15 @@ public class Bank {
 	 *         of the customers is not registered in the bank
 	 */
 	public Optional<String> registerCorporateAccount(String... customerId) {
-		return Optional.of("");
+		for(String customer : customerId){
+			if(!customers.containsKey(customer))	//customer not registered
+				return Optional.of(null);
+		}
+
+		Account account = new CorporateAccount(new BigDecimal(0), customerId);
+		accounts.put(account.getID(), account);
+
+		return Optional.of(account.getID());
 	}
 
 	/**
@@ -120,7 +127,13 @@ public class Bank {
 	 *         with the specified id is not registered in the bank
 	 */
 	public Optional<String> registerPersonalAccount(String customerId) {
-		return Optional.of("");
+		if(!customers.containsKey(customerId))	//customer not registered
+			return Optional.of(null);
+
+		Account account = new PersonalAccount(new BigDecimal(0), customerId);
+		accounts.put(account.getID(), account);
+
+		return Optional.of(account.getID());
 	}
 
 	/**
@@ -131,7 +144,7 @@ public class Bank {
 	 *         registered
 	 */
 	public Optional<BigDecimal> getBalance(String accountId) {
-		return Optional.of(new BigDecimal(0));
+		return Optional.of(accounts.getOrDefault(accountId, new PersonalAccount(null, "")).getBalance());
 	}
 
 	/**
@@ -142,7 +155,7 @@ public class Bank {
 	 * @return true iff the amount was successfully deposited; false otherwise
 	 */
 	public boolean deposit(String accountId, BigDecimal amount) {
-		return false;
+		return accounts.get(accountId).deposit(amount);
 	}
 
 	/**
@@ -154,7 +167,7 @@ public class Bank {
 	 * @return true iff the amount was successfully withdrawn; false otherwise
 	 */
 	public boolean withdraw(String accountId, BigDecimal amount) {
-		return false;
+		return accounts.get(accountId).withdraw(amount);
 	}
 
 	/**
@@ -169,7 +182,16 @@ public class Bank {
 	 *         otherwise
 	 */
 	public boolean transfer(String fromAccountId, String toAccountId, BigDecimal amount) {
-		return false;
+		if(!withdraw(fromAccountId, amount))
+			return false;
+
+		if(!deposit(toAccountId, amount)){
+			//give money back
+			deposit(fromAccountId, amount);
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -181,7 +203,14 @@ public class Bank {
 	 *         the {@link Optional} is empty if no customer with the given id is registered
 	 */
 	public Optional<Collection<String>> getAccounts(String customerId) {
-		return Optional.of(Collections.emptyList());
+		Collection<String> accountIDs = new LinkedList<String>();
+
+		accounts.forEach((k,v) -> {
+			if(k.equals(customerId))
+			accountIDs.add(k);
+		});
+
+		return Optional.of(accountIDs);
 	}
 
 	/**
@@ -193,6 +222,21 @@ public class Bank {
 	 *         empty if no customer with the given id is registered
 	 */
 	public Optional<BigDecimal> getTotalBalance(String customerId) {
-		return Optional.of(new BigDecimal(0));
+		BigDecimal total = new BigDecimal(0);
+		Collection<String> accountIDs;
+		
+		//get all accounts for a customer
+		Optional<Collection<String>> accIDsOrEmpty = getAccounts(customerId);
+		accountIDs = accIDsOrEmpty.orElseGet(null);
+
+		if(accountIDs == null)
+			return Optional.empty();
+
+
+		for(String accID : accountIDs){
+			total.add(accounts.get(accID).getBalance());
+		}
+		
+		return Optional.of(total);
 	}
 }

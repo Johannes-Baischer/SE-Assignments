@@ -3,11 +3,8 @@ package bank;
 import java.math.BigDecimal;
 
 public class CorporateAccount extends Account{
-    private String[] owner;
-
     public CorporateAccount(BigDecimal balance, String... owner){
-        this.balance = balance;
-        this.owner = owner;
+        super(balance, owner);
     }
 
     @Override
@@ -16,5 +13,4 @@ public class CorporateAccount extends Account{
         balance = balance.subtract(amount);
         return true;
     }
-    
 }

@@ -3,11 +3,8 @@ package bank;
 import java.math.BigDecimal;
 
 public class PersonalAccount extends Account{
-    private String owner;
-
     public PersonalAccount(BigDecimal balance, String owner){
-        this.balance = balance;
-        this.owner = owner;
+        super(balance, new String[] { owner });
     }
 
     @Override
