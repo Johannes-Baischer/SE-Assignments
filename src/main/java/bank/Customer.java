@@ -7,28 +7,47 @@ import java.util.Date;
  *
  */
 public class Customer {
+	private String id;
+	private String firstName, lastName;
+	private Date birthDay;
 
-	Customer(String firstName, String lastName, Date birthDay) {
+	public Customer(String firstName, String lastName, Date birthDay) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDay = birthDay;
+
+		this.id = 
+			firstName + "|" +
+			lastName  + "|" +
+			birthDay  + "|" +
+			System.currentTimeMillis() + "";
 	}
 
 	/**
 	 * @return the first name of this customer
 	 */
 	protected String getFirstName() {
-		return "";
+		return firstName;
 	}
 
 	/**
 	 * @return the last name of this customer
 	 */
 	protected String getLastName() {
-		return "";
+		return lastName;
 	}
 
 	/**
 	 * @return the birthday of this customer
 	 */
 	protected Date getBirthDay() {
-		return null;
+		return birthDay;
+	}
+
+	/**
+	 * @return the unique customer id
+	 */
+	protected String getID() {
+		return id;
 	}
 }

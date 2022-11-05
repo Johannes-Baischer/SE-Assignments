@@ -8,6 +8,19 @@ import java.math.BigDecimal;
  * 
  */
 public abstract class Account {
+	protected BigDecimal balance;
+	protected String[] owner;
+	private String id;
+
+	protected Account(BigDecimal balance, String... owner){
+		this.balance = balance;
+        this.owner = owner;
+
+		for(String o : this.owner){
+			id += o;
+		}
+		id += System.currentTimeMillis();
+	}
 
 	/**
 	 * Withdraws the given amount from the account's balance.
@@ -17,11 +30,24 @@ public abstract class Account {
 	 */
 	protected abstract boolean withdraw(BigDecimal amount);
 
+	public boolean deposit(BigDecimal amount){
+		balance.add(amount);
+
+		return balance != null;
+	}
+
 	/**
 	 * @return the balance of the account
 	 */
-	public BigDecimal getBalance() {
-		return null;
+	public BigDecimal getBalance(){
+		return balance;
 	}
 
+	/**
+	 * @return the unique account id
+	 */
+	public String getID(){
+		return id;
+	}
+	
 }
