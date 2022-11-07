@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -67,6 +69,7 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
+<h1 title="Github Link" class="title"><a href="https://github.com/sweng-plus/a2-res-sew22-s1086240_s1054335/blob/main/src/main/java/calc/Calculator.java">Calculator on Github</a></h1>
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">calc</a></div>
 <h1 title="Interface Calculator" class="title">Interface Calculator</h1>
 </div>
@@ -140,6 +143,21 @@ loadScripts(document, 'script');</script>
 <dd>the result of the calculation, e.g. -3.5 for the above input</dd>
 <dt>Throws:</dt>
 <dd><code><a href="CalcException.html" title="class in calc">CalcException</a></code> - if anything goes wrong during the calculation (e.g., in case of an illegal input)</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+/**
+ * performs the calculation on the given input in infix notation. Supported operations are:
+ * addition (+), substraction (-), multiplication (*), and division (/).
+ * Also parenthesis '(', ')' are allowed.
+ *
+ * @param expression the input to the calculation in infix form
+ * e.g., ["(", "1.5", "+" , "2", ")", "*", "(", "3", "-", "4", ")"]
+ * @return the result of the calculation, e.g. -3.5 for the above input
+ * @throws CalcException if anything goes wrong during the calculation (e.g., in case of an illegal input)
+ */
+double calcInfix(String[] expression) throws CalcException;
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -158,6 +176,20 @@ loadScripts(document, 'script');</script>
 <dd>the result of the calculation, e.g. -3.5 for the above input</dd>
 <dt>Throws:</dt>
 <dd><code><a href="CalcException.html" title="class in calc">CalcException</a></code> - if anything goes wrong during the calculation (e.g., in case of an illegal input)</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+/**
+ * performs the calculation on the given input in postfix notation. Supported operations are:
+ * addition (+), substraction (-), multiplication (*), and division (/)
+ *
+ * @param expression the input to the calculation in postfix form
+ * e.g., ["1.5", "2", "+", "3", "4", "-", "*"]
+ * @return the result of the calculation, e.g. -3.5 for the above input
+ * @throws CalcException if anything goes wrong during the calculation (e.g., in case of an illegal input)
+ */
+double calcPostfix(String[] expression) throws CalcException;
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -165,6 +197,17 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getPrec(java.lang.String)">
 <h3>getPrec</h3>
 <div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getPrec</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;op)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+static int getPrec(String op) {
+    if ("*".equals(op) || "/".equals(op))
+        return 2;
+    if ("+".equals(op) || "-".equals(op))
+        return 1;
+    return -1;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -177,6 +220,42 @@ loadScripts(document, 'script');</script>
 <dd><code>expression</code> - the expression in infix notation</dd>
 <dt>Returns:</dt>
 <dd>the expression in postfix notation</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+/**
+ * Converts a given infix-expression into postfix notation.
+ *
+ * @param expression the expression in infix notation
+ * @return the expression in postfix notation
+ */
+static String[] infix2postfix(String expression[]) {
+    List<String> result = new ArrayList<>();
+    Stack<String> stack = new Stack<>();
+    for (String exp : expression) {
+        int prec = getPrec(exp);
+        if (prec > 0) { //operation
+            while (!stack.empty() && prec <= getPrec(stack.peek())) {
+                result.add(stack.pop());
+            }
+            stack.push(exp);
+        } else if ("(".equals(exp)) {
+            stack.push("(");
+        } else if (")".equals(exp)) {
+            while (!stack.peek().equals("(")) {
+                result.add(stack.pop());
+            }
+            stack.pop();
+        } else { //assumes to be a number
+            result.add(exp);
+        }
+    }
+	while (!stack.isEmpty()){ //pop everything remaining
+        result.add(stack.pop());
+    }
+    return result.toArray(new String[]{});
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
