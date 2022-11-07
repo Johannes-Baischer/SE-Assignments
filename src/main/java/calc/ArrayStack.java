@@ -17,8 +17,8 @@ public class ArrayStack<E> implements GenericStack<E> {
 
         E item = null;
         counter--;
-            item = stack[counter];
-            stack[counter] = null;
+        item = stack[counter];
+        stack[counter] = null;
 
         return item;
     }
