@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -67,6 +69,7 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
+<h1 title="Github Link" class="title"><a href="https://github.com/sweng-plus/a2-res-sew22-s1086240_s1054335/blob/main/src/main/java/calc/Main.java">Main on Github</a></h1>
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">calc</a></div>
 <h1 title="Class Main" class="title">Class Main</h1>
 </div>
@@ -142,6 +145,34 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="main(java.lang.String[])">
 <h3>main</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">main</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;args)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public static void main(String[] args) {
+    CalcMain calculator = new CalcMain(CalcMain.getListStack());
+
+    //String[] expInfix = {"1", "+", "2", "+", "9", "/", "3"};                  //6
+    String[] expInfix = {"(", "1", "+", "2", "+", "9", ")", "/", "3"};          //4
+
+    //String[] expPostfix = {"1", "2", "+", "9", "3", "/", "+"};                //6
+    //String[] expPostfix = {"1", "2", "+", "9", "+", "3", "/"};                //4
+    //String[] expPostfix ={"1.5", "2", "+", "3", "4", "-"};                    //Not enough operations
+    String[] expPostfix ={"1", "9", "/", "9", "/"};                             //0.012345679012345678
+
+
+    // try {
+    //     System.out.println("Infix: " + calculator.calcInfix(expInfix));
+    // } catch (CalcException e) {
+    //     e.printStackTrace();
+    // }
+
+    try {
+        System.out.println("Postfix: " + calculator.calcPostfix(expPostfix));
+    } catch (CalcException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
