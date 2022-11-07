@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -67,6 +69,7 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
+<h1 title="Github Link" class="title"><a href="https://github.com/sweng-plus/a2-res-sew22-s1086240_s1054335/blob/main/src/main/java/calc/CalcMain.java">CalcMain on Github</a></h1>
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">calc</a></div>
 <h1 title="Class CalcMain" class="title">Class CalcMain</h1>
 </div>
@@ -166,6 +169,20 @@ implements <a href="Calculator.html" title="interface in calc">Calculator</a></s
 <dt>Parameters:</dt>
 <dd><code>stack</code> - an instance of a stack that implements the interface <code>GenericStack</code></dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class CalcMain implements Calculator {
+    private GenericStack<Double> stack;
+    
+    /**
+     * Constructor for the calculator.
+     * @param stack an instance of a stack that implements the interface {@code GenericStack}
+     */
+    public CalcMain(GenericStack<Double> stack) {
+        this.stack = stack;
+    }
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -194,6 +211,15 @@ implements <a href="Calculator.html" title="interface in calc">Calculator</a></s
 <dd>the result of the calculation, e.g. -3.5 for the above input</dd>
 <dt>Throws:</dt>
 <dd><code><a href="CalcException.html" title="class in calc">CalcException</a></code> - if anything goes wrong during the calculation (e.g., in case of an illegal input)</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+/** {@inheritDoc} */
+@Override
+public double calcInfix(String[] s) throws CalcException {
+    return calcPostfix(Calculator.infix2postfix(s));
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -214,6 +240,80 @@ implements <a href="Calculator.html" title="interface in calc">Calculator</a></s
 <dd>the result of the calculation, e.g. -3.5 for the above input</dd>
 <dt>Throws:</dt>
 <dd><code><a href="CalcException.html" title="class in calc">CalcException</a></code> - if anything goes wrong during the calculation (e.g., in case of an illegal input)</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+/** {@inheritDoc} */
+@Override
+public double calcPostfix(String[] s) throws CalcException {
+    char c;
+    double a = Double.NaN;
+    double b = Double.NaN;
+    double result;
+
+    for(String NumOrOp : s){
+        if(NumOrOp.length() == 0){
+            //empty expression
+            throw new CalcException("The expression contained empty inputs!");
+        }
+
+        c = NumOrOp.charAt(0);
+
+            switch (c) {
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                    if(stack.isEmpty())
+                        throw new CalcException("Not enough operands!");
+                    a = stack.pop();
+
+                    if(stack.isEmpty())
+                        throw new CalcException("Not enough operands!");
+                    b = stack.pop();
+
+                    switch(c){
+                        case '+':
+                            stack.push(b + a);
+                            break;
+
+                        case '-':
+                            stack.push(b - a);
+                            break;
+
+                        case '*':
+                            stack.push(b * a);
+                            break;
+
+                        case '/':
+                            if(b == 0){
+                                //Division by 0 error
+                                throw new CalcException("Division by 0!");
+                            }
+                            stack.push(b / a);
+                            break;
+                        }
+                        break;
+
+                default:
+                    //Not an operation, so expect number
+                    try {
+                        stack.push(Double.parseDouble(NumOrOp));
+                    } catch (Exception e) {
+                        //input neither operation nor number
+                        throw new CalcException("Invalid number input: " + NumOrOp);
+                    }
+            }
+    }
+
+    result = stack.pop();
+
+    if(!stack.isEmpty())
+        throw new CalcException("Not enough operations!");
+    else
+        return result;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -229,6 +329,21 @@ implements <a href="Calculator.html" title="interface in calc">Calculator</a></s
                  to be stored in the stack)</dd>
 <dt>Returns:</dt>
 <dd>an instance of the array-based stack with the given capacity</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+/**
+ * Creates and returns a new instance of an array-based stack with limited
+ * capacity. The stack must not change the capacity.
+ *
+ * @param capacity the capacity of the stack (i.e., maximum number of elements
+ *                 to be stored in the stack)
+ * @return an instance of the array-based stack with the given capacity
+ */
+public static GenericStack<Double> getArrayStack(int capacity) {
+    return new ArrayStack<Double>(capacity);
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -241,6 +356,19 @@ implements <a href="Calculator.html" title="interface in calc">Calculator</a></s
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>an instance of a list-based stack (with unbound capacity)</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+/**
+ * Creates and returns a new instance of a list-based stack with unbound
+ * capacity.
+ *
+ * @return an instance of a list-based stack (with unbound capacity)
+ */
+public static GenericStack<Double> getListStack() {
+    return new ListStack<Double>();
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
