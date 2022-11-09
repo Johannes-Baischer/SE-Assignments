@@ -70,7 +70,7 @@ public class CalcMain implements Calculator {
                                 break;
 
                             case '/':
-                                if(b == 0){
+                                if(a == 0){
                                     //Division by 0 error
                                     throw new CalcException("Division by 0!");
                                 }
