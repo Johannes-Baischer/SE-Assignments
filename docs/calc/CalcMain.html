@@ -285,7 +285,7 @@ public double calcPostfix(String[] s) throws CalcException {
                             break;
 
                         case '/':
-                            if(b == 0){
+                            if(a == 0){
                                 //Division by 0 error
                                 throw new CalcException("Division by 0!");
                             }
