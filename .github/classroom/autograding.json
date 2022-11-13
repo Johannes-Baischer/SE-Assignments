@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "readXML Test",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=CompositeTest#testReadXML test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "getPrice Test",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=CompositeTest#testGetPrice test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 3
+    },
+    {
+      "name": "Remove Test",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=CompositeTest#testRemove test",
+     "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 3
+    },
+    {
+      "name": "changePrice Test",
+       "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=CompositeTest#testChangePrice test",
+     "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 3
+    }
+  ]
+}
