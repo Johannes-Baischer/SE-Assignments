@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -146,6 +148,14 @@ loadScripts(document, 'script');</script>
 <h3>CorporateAccount</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">CorporateAccount</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a>&nbsp;balance,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>...&nbsp;owner)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class CorporateAccount extends Account{
+    public CorporateAccount(BigDecimal balance, String... owner){
+        super(balance, owner);
+    }
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -169,6 +179,14 @@ loadScripts(document, 'script');</script>
 <dd><code>amount</code> - the amount to withdraw</dd>
 <dt>Returns:</dt>
 <dd>boolean true iff the withdraw operation was successful</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+protected boolean withdraw(BigDecimal amount) {
+    balance = balance.subtract(amount);
+    return true;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>

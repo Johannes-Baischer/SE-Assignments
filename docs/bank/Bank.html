@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -214,6 +216,18 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>Bank</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Bank</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class Bank {
+    Map<String, Customer> customers;
+    Map<String, Account> accounts;
+    
+    public Bank() {
+        customers = new TreeMap<String, Customer>();
+        accounts = new TreeMap<String, Account>();
+    }
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -239,6 +253,16 @@ loadScripts(document, 'script');</script>
 <dd><code>birthDay</code> - the customer's birthday</dd>
 <dt>Returns:</dt>
 <dd>the id of the created and registered customer object</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public String registerCustomer(String firstName, String lastName, Date birthDay) {
+	Customer customer = new Customer(firstName, lastName, birthDay);
+	customers.put(customer.getID(), customer);
+
+	return customer.getID();
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -258,6 +282,23 @@ loadScripts(document, 'script');</script>
 <dd><code>birthDay</code> - a day of birth</dd>
 <dt>Returns:</dt>
 <dd>the (possibly empty) collection;</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Collection<String> getCustomers(String firstName, String lastName, Date birthDay) {
+	Collection<String> customerIDS = new LinkedList<String>();
+
+	customers.forEach((k,v) -> {
+		if((v.getFirstName().equals(firstName))
+			&& (v.getLastName().equals(lastName))
+			&& (v.getBirthDay().equals(birthDay))){
+				customerIDS.add(k);
+			}
+	});
+
+	return customerIDS;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -272,6 +313,18 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>true if an account with the given id existed and was successfully
          removed; otherwise false</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean removeAccount(String accountId) {
+	if((accountId != null) && (accounts.containsKey(accountId))){
+		accounts.remove(accountId);
+		return true;
+	}
+
+	return false;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -290,6 +343,24 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the unique id of the newly created account as an <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a>; the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a> is empty if at least one
          of the customers is not registered in the bank</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Optional<String> registerCorporateAccount(String... customerId) {
+	if(customerId == null)
+		return Optional.empty();
+
+	for(String customer : customerId){
+		if((customer == null) || (!customers.containsKey(customer)))	//customer not registered
+			return Optional.empty();
+	}
+
+	Account account = new CorporateAccount(new BigDecimal(0), customerId);
+	accounts.put(account.getID(), account);
+
+	return Optional.of(account.getID());
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -308,6 +379,19 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the unique id of the newly created account as an <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a>; the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a> is empty if the customer
          with the specified id is not registered in the bank</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Optional<String> registerPersonalAccount(String customerId) {
+	if((customerId == null) || (!customers.containsKey(customerId)))	//customer not registered
+		return Optional.empty();
+
+	Account account = new PersonalAccount(new BigDecimal(0), customerId);
+	accounts.put(account.getID(), account);
+
+	return Optional.of(account.getID());
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -322,6 +406,16 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the balance of the account as an <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a>; the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a> is empty if no account for this id is
          registered</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Optional<BigDecimal> getBalance(String accountId) {
+	if((accountId == null) || (!accounts.containsKey(accountId)))
+		return Optional.empty();
+
+	return Optional.of(accounts.get(accountId).getBalance());
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -337,6 +431,22 @@ loadScripts(document, 'script');</script>
 <dd><code>amount</code> - the amount that shall be deposited</dd>
 <dt>Returns:</dt>
 <dd>true iff the amount was successfully deposited; false otherwise</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean deposit(String accountId, BigDecimal amount) {
+	if((accountId == null) || (amount == null))
+		return false;
+
+	Account acc = accounts.get(accountId);
+	if(acc == null)
+		return false;
+
+	acc.deposit(amount);
+
+	return true;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -353,6 +463,21 @@ loadScripts(document, 'script');</script>
 <dd><code>amount</code> - the amount that shall be widhdrawn</dd>
 <dt>Returns:</dt>
 <dd>true iff the amount was successfully withdrawn; false otherwise</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean withdraw(String accountId, BigDecimal amount) {
+	if((accountId == null) || (amount == null))
+		return false;
+
+	Account acc = accounts.get(accountId);
+
+	if(acc == null)
+		return false;
+
+	return acc.withdraw(amount);
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -373,6 +498,22 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>true iff the transfer operation was performed successfully; false
          otherwise</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean transfer(String fromAccountId, String toAccountId, BigDecimal amount) {
+	if(!withdraw(fromAccountId, amount))
+		return false;
+
+	if(!deposit(toAccountId, amount)){
+		//give money back
+		deposit(fromAccountId, amount);
+		return false;
+	}
+
+	return true;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -388,6 +529,25 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the (potentially empty) collection of accounts (e.g., a list) as an <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a>;
          the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a> is empty if no customer with the given id is registered</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Optional<Collection<String>> getAccounts(String customerId) {
+	Collection<String> accountIDs = new LinkedList<String>();
+
+	if((customerId == null) || (customers.get(customerId) == null))
+		return Optional.empty();
+
+	//go through all owners for all accounts
+	accounts.forEach((k,v) -> {
+		for(String owner : v.owner)
+			if(owner.equals(customerId))
+				accountIDs.add(k);
+	});
+	
+	return Optional.of(accountIDs);
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -403,6 +563,33 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the sum of all accounts owned by the customer as an <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a>; the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link"><code>Optional</code></a> is
          empty if no customer with the given id is registered</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Optional<BigDecimal> getTotalBalance(String customerId) {
+	BigDecimal total = new BigDecimal(0);
+	Collection<String> accountIDs;
+
+	//check if customer exists
+	if((customerId == null) || (customers.get(customerId) == null))
+		return Optional.empty();
+
+		
+	//get all accounts for a customer
+	Optional<Collection<String>> accIDsOrEmpty = getAccounts(customerId);
+	accountIDs = accIDsOrEmpty.orElseGet(null);
+
+	if(accountIDs == null)
+		return Optional.empty();
+
+
+	for(String accID : accountIDs){
+		total = total.add(accounts.get(accID).getBalance());
+	}
+		
+	return Optional.of(total);
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>

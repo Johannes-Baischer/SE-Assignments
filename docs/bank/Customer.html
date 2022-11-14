@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -142,6 +144,28 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Customer</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;firstName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;lastName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link">Date</a>&nbsp;birthDay)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class Customer {
+    private static int runningID = 1;
+    
+    private String id;
+    private String firstName, lastName;
+    private Date birthDay;
+    
+    public Customer(String firstName, String lastName, Date birthDay) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDay = birthDay;
+    
+        this.id = 
+            firstName + "|" +
+            lastName  + "|" +
+            birthDay  + "|" +
+            runningID++;
+    }
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -159,6 +183,13 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>the first name of this customer</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+protected String getFirstName() {
+	return firstName;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -169,6 +200,13 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>the last name of this customer</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+protected String getLastName() {
+	return lastName;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -179,6 +217,13 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>the birthday of this customer</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+protected Date getBirthDay() {
+	return birthDay;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
@@ -189,6 +234,13 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>the unique customer id</dd>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+protected String getID() {
+	return id;
+}
+</code></pre>
+<!--CODE END-->
 </dl>
 </section>
 </li>
