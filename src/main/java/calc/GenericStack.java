@@ -17,4 +17,6 @@ public interface GenericStack<E> {
     void push(E e);
 
     boolean isEmpty();
+
+    int getSize();
 }
