@@ -11,25 +11,85 @@ package calc;
  *
  */
 public class CalcMain implements Calculator {
+    private GenericStack<Double> stack;
 
     /**
      * Constructor for the calculator.
      * @param stack an instance of a stack that implements the interface {@code GenericStack}
      */
     public CalcMain(GenericStack<Double> stack) {
-        //TODO
+        this.stack = stack;
     }
 
     /** {@inheritDoc} */
     @Override
     public double calcInfix(String[] s) throws CalcException {
-        return 0; //TODO
+        return calcPostfix(Calculator.infix2postfix(s));
     }
 
     /** {@inheritDoc} */
     @Override
     public double calcPostfix(String[] s) throws CalcException {
-        return 0; //TODO
+        char c;
+        double a = Double.NaN;
+        double b = Double.NaN;
+        double result;
+
+        for(String NumOrOp : s){
+            if(NumOrOp.length() == 0){
+                //empty expression
+                throw new CalcException("The expression contained empty inputs!");
+            }
+
+            c = NumOrOp.charAt(0);
+
+                switch (c) {
+                    case '+':
+                    case '-':
+                    case '*':
+                    case '/':
+                        if(stack.isEmpty())
+                            throw new CalcException("Not enough operands!");
+                        a = stack.pop();
+
+                        if(stack.isEmpty())
+                            throw new CalcException("Not enough operands!");
+                        b = stack.pop();
+
+                        if(c == '+')
+                            stack.push(b + a);
+
+                        if(c == '-')
+                            stack.push(b - a);
+
+                        if(c == '*')
+                            stack.push(b * a);
+
+                        if(c == '/'){
+                            if(a == 0)
+                                throw new CalcException("Division by 0!");
+                                
+                            stack.push(b / a);
+                        }
+                        break;
+
+                    default:
+                        //Not an operation, so expect number
+                        try {
+                            stack.push(Double.parseDouble(NumOrOp));
+                        } catch (Exception e) {
+                            //input neither operation nor number
+                            throw new CalcException("Invalid number input: " + NumOrOp);
+                        }
+                }
+        }
+
+        result = stack.pop();
+
+        if(!stack.isEmpty())
+            throw new CalcException("Not enough operations!");
+        else
+            return result;
     }
 
     /**
@@ -41,7 +101,7 @@ public class CalcMain implements Calculator {
      * @return an instance of the array-based stack with the given capacity
      */
     public static GenericStack<Double> getArrayStack(int capacity) {
-        return null; //TODO
+        return new ArrayStack<Double>(capacity);
     }
 
     /**
@@ -51,7 +111,7 @@ public class CalcMain implements Calculator {
      * @return an instance of a list-based stack (with unbound capacity)
      */
     public static GenericStack<Double> getListStack() {
-        return null; //TODO
+        return new ListStack<Double>();
     }
 
 }
