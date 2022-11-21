@@ -21,7 +21,7 @@ public class ItemManager {
 	private List root;
 
 	public ItemManager() {
-		//TODO
+		root = null;
 	}
 
 	/**
@@ -112,6 +112,39 @@ public class ItemManager {
 	}
 
 	/**
+	 * removes the item with the given name, unless it's the root
+	 * returns true if the operation succeeded (item found and removed)
+	 * returns false if item is the root, or it is not found, or it cannot be removed due to some other error
+	 */
+	public boolean removeItem(String item) {
+		Item[] result = getParentListAndItem(item);
+
+		if(result == null || result[0] == null){
+			//item not found or found item is root
+			return false;
+		}
+
+		return result[0].getItems().remove(result[1]);
+	}
+
+	/**
+	 * changes the price of the item with the given name; 
+	 * returns false if item is not found or it is a list, or if the price is smaller than or equal to 0,
+	 * returns false if the price could not be changed for any other reason;
+	 * returns true if the price was changed successfully (i.e., the item had a different price before); 
+	 */
+	public boolean changePrice(String item, double price) {
+		Item[] result = getParentListAndItem(item);
+
+		if(result == null){
+			//item not found or found item is root
+			return false;
+		}
+
+		return result[1].setPrice(price);
+	}
+
+	/**
 	 * Method for finding a element and its parent list in a BFS way
 	 * @param name of the item to be searched
 	 * @return Array with 0: ParentList & 1: item; or 0: null & 1: root if found item is root
@@ -147,38 +180,5 @@ public class ItemManager {
 		}
 		
 		return null; 	//item not found
-	}
-
-	/**
-	 * removes the item with the given name, unless it's the root
-	 * returns true if the operation succeeded (item found and removed)
-	 * returns false if item is the root, or it is not found, or it cannot be removed due to some other error
-	 */
-	public boolean removeItem(String item) {
-		Item[] result = getParentListAndItem(item);
-
-		if(result == null || result[0] == null){
-			//item not found or found item is root
-			return false;
-		}
-
-		return result[0].getItems().remove(result[1]);
-	}
-
-	/**
-	 * changes the price of the item with the given name; 
-	 * returns false if item is not found or it is a list, or if the price is smaller than or equal to 0,
-	 * returns false if the price could not be changed for any other reason;
-	 * returns true if the price was changed successfully (i.e., the item had a different price before); 
-	 */
-	public boolean changePrice(String item, double price) {
-		Item[] result = getParentListAndItem(item);
-
-		if(result == null){
-			//item not found or found item is root
-			return false;
-		}
-
-		return result[1].setPrice(price);
 	}
 }
