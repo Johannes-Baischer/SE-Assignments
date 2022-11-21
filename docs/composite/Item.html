@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,7 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">composite</a></div>
-<h1 title="Class Item" class="title">Class Item</h1>
+<h1 title="Class Item" class="title"><a href="https://github.com/sweng-plus/a4-res-sew22-s1086240_s1054335/blob/main/src/main/java/composite/Item.java">Class Item (Github)</a></h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">composite.Item</div>
@@ -204,6 +206,13 @@ loadScripts(document, 'script');</script>
 <h3>getItems</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="Item.html" title="class in composite">Item</a>&gt;</span>&nbsp;<span class="element-name">getItems</span>()</div>
 <div class="block">Return children if there can exist any</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public ArrayList<Item> getItems() {
+    return new ArrayList<Item>();
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -211,6 +220,13 @@ loadScripts(document, 'script');</script>
 <h3>setName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
 <div class="block">Sets name of item</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void setName(String name){
+    this.name = name;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -221,6 +237,13 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the name of item</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public String getName(){
+    return name;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -234,6 +257,11 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>true if price was set succesfully, false otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+abstract public boolean setPrice(double price);
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -244,6 +272,11 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the price of this item</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+abstract public double getPrice();
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>

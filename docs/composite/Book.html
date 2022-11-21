@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,7 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">composite</a></div>
-<h1 title="Class Book" class="title">Class Book</h1>
+<h1 title="Class Book" class="title"><a href="https://github.com/sweng-plus/a4-res-sew22-s1086240_s1054335/blob/main/src/main/java/composite/Book.java">Class Book (Github)</a></h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance"><a href="Item.html" title="class in composite">composite.Item</a>
@@ -160,6 +162,18 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Book</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  double&nbsp;price,
  int&nbsp;isbn)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class Book extends Item {
+    private int isbn;
+    
+    public Book(String name, double price, int isbn) {
+        setName(name);
+        setPrice(price);
+        setISBN(isbn);
+    }
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -180,6 +194,14 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>the price of this item</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public double getPrice() {
+    return price;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -194,6 +216,18 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>true if price was set succesfully, false otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public boolean setPrice(double price){ 
+    if(price <= 0)
+        return false;
+
+    this.price = price; 
+    return true;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -205,6 +239,13 @@ loadScripts(document, 'script');</script>
 <dt>Parameters:</dt>
 <dd><code>isbn</code> - number</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void setISBN( int isbn ) {
+    this.isbn = isbn;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -215,6 +256,13 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>isbn number</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public int getISBN() {
+    return this.isbn;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
