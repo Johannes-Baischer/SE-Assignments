@@ -28,4 +28,18 @@ public class List extends Item {
 
     /** Adds an item to items list */
     public void addItems(Item item) { items.add(item); }
+
+    // @Override
+    // public Item findItem(String name){
+    //     Item item = null;
+
+    //     for(Item i : getItems()){
+    //         item = i.findItem(name);
+
+    //         if(item != null)
+    //             return item;
+    //     }
+
+    //     return item;
+    // }
 }

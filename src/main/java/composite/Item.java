@@ -11,6 +11,9 @@ public abstract class Item {
     /** Return children if there can exist any */
     public ArrayList<Item> getItems() { return new ArrayList<Item>(); }
     
+    // /** Return children if there can exist any */
+    // public Item findItem(String name) { return this.name.equals(name) ? this : null; }       //implementation with out empty list
+    
     /** Sets name of item */
     public void setName(String name){ this.name = name; }
 
