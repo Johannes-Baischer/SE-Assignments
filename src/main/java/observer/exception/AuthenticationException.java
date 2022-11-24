@@ -1,4 +1,4 @@
-package observer;
+package observer.exception;
 
 public class AuthenticationException extends NewsSpreaderException {
 	public AuthenticationException(String source) {

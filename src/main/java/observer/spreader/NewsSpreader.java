@@ -1,11 +1,15 @@
-package observer;
+package observer.spreader;
+
+import observer.exception.AuthenticationException;
+import observer.exception.BlockedContentException;
+import observer.exception.NewsSpreaderException;
+import observer.exception.UntrustedSourceException;
+import observer.receiver.NewsReceiver;
 
 /**
  * An interface for spreading news.
  */
 public interface NewsSpreader {
-	
-	
 	/**
 	 * Registers a trusted news-source.
 	 * 
@@ -15,6 +19,20 @@ public interface NewsSpreader {
 	 * @return false if source is null or already registered or if pwd is null or empty , true otherwise
 	 */
 	public boolean registerTrustedSource(String source, String pwd);
+
+	/**
+	 * Registers a new NewsReceiver
+	 * @param newsReceiver NewsReceiver to be registerd
+	 * @return false if NewsReceiver was already registered, true otherwise
+	 */
+	public boolean registerNewsReceiver(NewsReceiver newsReceiver);
+
+	/**
+	 * Unregisters a new NewsReceiver
+	 * @param newsReceiver NewsReceiver to be removed
+	 * @return if the NewsReceiver was successfully removed, false if e.g. was not registered
+	 */
+	public boolean unregisterNewsReceiver(NewsReceiver newsReceiver);
 
 
 	/**
