@@ -21,5 +21,10 @@ public class Main {
 
         krone.sendNews(krone.generateMessage());
         krone.sendNews(krone.generateMessage());
+
+        broadcaster.blockWord("Sport", true);
+
+        krone.sendNews(krone.generateMessage());
+        krone.sendNews(krone.generateMessage());
     }
 }

@@ -42,6 +42,9 @@ public class MainSpreader implements NewsSpreader {
 		if(trustedSources.get(source).equals(getPasswordHash(pwd)) == false)
 			throw new AuthenticationException(source);
 
+		if(news == null)
+			throw new IllegalArgumentException(source);
+
 		Topic topic = getTopicFromMessage(news);
 		news = censorBlockedWords(news, source);
 		
@@ -52,7 +55,7 @@ public class MainSpreader implements NewsSpreader {
 				r.receiveNews(this, bcmessage);
 		});
 
-		return bcmessage.toString();
+		return news;
 	}
 
 
@@ -61,7 +64,10 @@ public class MainSpreader implements NewsSpreader {
 		if(contents == null || contents == "")
 			return false;
 
-		return blockedWords.put(contents, redact) != null;
+		if(!contents.matches("[a-zA-Z]+\\.?"))
+			return false;
+
+		return blockedWords.put(contents, redact) == null;
 	}
 
 
@@ -148,9 +154,7 @@ public class MainSpreader implements NewsSpreader {
 	/** replaced blocked words in message or throws an Exception if needed */
 	private String censorBlockedWords(String message, String source) throws NewsSpreaderException{
 		for(String word : blockedWords.keySet()){
-			word = word.toLowerCase();
-
-			if(message.contains(word)){
+			if(message.toLowerCase().contains(word.toLowerCase())){
 				//found word to censor
 
 				if(blockedWords.get(word).equals(false)){
@@ -159,7 +163,7 @@ public class MainSpreader implements NewsSpreader {
 				}
 	
 				//censoring with hashtag
-				message = message.replace("(?i)" + word, "#");
+				message = message.replace("(?i)\\b" + word + "[ ,.<>-_]?\\b", "#");
 			}
 		}
 
