@@ -1,4 +1,5 @@
-package observer.exception;
+//package observer.exception;
+package observer;
 
 public class NewsSpreaderException extends Exception {
 	public NewsSpreaderException(String source) {

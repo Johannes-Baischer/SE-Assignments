@@ -1,9 +1,8 @@
-package observer.source;
+//package observer.source;
+package observer;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import observer.spreader.NewsSpreader;
 
 public abstract class NewsSource {
     private Set<NewsSpreader> broadcasts;

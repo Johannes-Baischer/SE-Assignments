@@ -1,10 +1,8 @@
-package observer.receiver;
+//package observer.receiver;
+package observer;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import observer.message.*;
-import observer.spreader.NewsSpreader;
 
 public abstract class NewsReceiver {
     private Set<Topic> topics;

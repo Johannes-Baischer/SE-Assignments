@@ -1,10 +1,5 @@
-package observer.spreader;
-
-import observer.exception.AuthenticationException;
-import observer.exception.BlockedContentException;
-import observer.exception.NewsSpreaderException;
-import observer.exception.UntrustedSourceException;
-import observer.receiver.NewsReceiver;
+//package observer.spreader;
+package observer;
 
 /**
  * An interface for spreading news.

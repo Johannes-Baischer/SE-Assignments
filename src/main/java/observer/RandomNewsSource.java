@@ -1,8 +1,7 @@
-package observer.source;
+//package observer.source;
+package observer;
 
 import java.util.Random;
-
-import observer.message.Topic;
 
 public class RandomNewsSource extends NewsSource {
     public RandomNewsSource(String name, String password) {

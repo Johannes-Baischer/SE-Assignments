@@ -1,6 +1,5 @@
-package observer.receiver;
-
-import observer.message.BCMessage;
+//package observer.receiver;
+package observer;
 
 public class NewsReceiverCommandLine extends NewsReceiver {
     @Override

@@ -1,4 +1,5 @@
-package observer.message;
+//package observer.message;
+package observer;
 
 public enum Topic {
     Sport,

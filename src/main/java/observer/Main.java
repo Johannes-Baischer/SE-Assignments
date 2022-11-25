@@ -1,13 +1,5 @@
 package observer;
 
-import observer.message.Topic;
-import observer.receiver.NewsReceiver;
-import observer.receiver.NewsReceiverCommandLine;
-import observer.receiver.NewsReceiverFile;
-import observer.source.RandomNewsSource;
-import observer.spreader.MainSpreader;
-import observer.spreader.NewsSpreader;
-
 public class Main {
     public static void main(String[] args) {
         NewsSpreader broadcaster = new MainSpreader();

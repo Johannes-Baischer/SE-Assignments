@@ -1,4 +1,5 @@
-package observer.spreader;
+//package observer.spreader;
+package observer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
@@ -6,15 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-
-import observer.exception.AuthenticationException;
-import observer.exception.BlockedContentException;
-import observer.exception.NewsSpreaderException;
-import observer.exception.UntrustedSourceException;
-import observer.message.BCMessage;
-import observer.message.Topic;
-import observer.receiver.NewsReceiver;
-
 
 public class MainSpreader implements NewsSpreader {
 	/** Map containing blocked words, with the option to replace with # if value is true */

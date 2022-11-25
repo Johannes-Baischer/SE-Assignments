@@ -1,11 +1,10 @@
-package observer.receiver;
+//package observer.receiver;
+package observer;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import observer.message.BCMessage;
 
 public class NewsReceiverFile extends NewsReceiver {
     @Override

@@ -1,4 +1,5 @@
-package observer.exception;
+//package observer.exception;
+package observer;
 
 public class UntrustedSourceException extends NewsSpreaderException {
 	public UntrustedSourceException(String source) {
