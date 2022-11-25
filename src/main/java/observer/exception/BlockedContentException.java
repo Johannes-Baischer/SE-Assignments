@@ -1,4 +1,4 @@
-package observer;
+package observer.exception;
 
 public class BlockedContentException extends NewsSpreaderException {
 	public BlockedContentException(String source) {

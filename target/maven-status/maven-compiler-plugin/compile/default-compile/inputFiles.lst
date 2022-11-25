@@ -1,0 +1,14 @@
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\exception\BlockedContentException.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\exception\NewsSpreaderException.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\message\BCMessage.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\Main.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\message\Topic.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\source\RandomNewsSource.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\spreader\NewsSpreader.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\exception\UntrustedSourceException.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\receiver\NewsReceiver.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\receiver\NewsReceiverFile.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\source\NewsSource.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\exception\AuthenticationException.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\receiver\NewsReceiverCommandLine.java
+c:\GitHub\a6-res-sew22-s1086240_s1054335\src\main\java\observer\spreader\MainSpreader.java
