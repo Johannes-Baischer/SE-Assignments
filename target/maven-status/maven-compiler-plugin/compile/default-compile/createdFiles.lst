@@ -1,0 +1,15 @@
+observer\message\BCMessage.class
+observer\exception\AuthenticationException.class
+observer\source\RandomNewsSource.class
+observer\exception\UntrustedSourceException.class
+observer\exception\NewsSpreaderException.class
+observer\spreader\MainSpreader.class
+observer\receiver\NewsReceiverCommandLine.class
+observer\exception\BlockedContentException.class
+observer\spreader\NewsSpreader.class
+observer\message\Topic.class
+observer\receiver\NewsReceiver.class
+observer\source\RandomNewsSource$1.class
+observer\Main.class
+observer\receiver\NewsReceiverFile.class
+observer\source\NewsSource.class

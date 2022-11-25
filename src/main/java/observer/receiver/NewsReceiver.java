@@ -30,6 +30,10 @@ public abstract class NewsReceiver {
         return topics.add(topic);
     }
 
+    public Set<Topic> getTopics(){
+        return topics;
+    }
+
     /**
      * Registers this NewsReceiver to get broadcasts from the given NewsSpreader
      * @param broadcaster NewsSpreader to subscribe to

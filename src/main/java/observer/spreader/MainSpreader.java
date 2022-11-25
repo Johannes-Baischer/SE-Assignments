@@ -15,10 +15,7 @@ import observer.message.BCMessage;
 import observer.message.Topic;
 import observer.receiver.NewsReceiver;
 
-/**
-*  TODO: Complete the implementation. Do not change class name and existing method signatures. You may add base class and other interfaces. Make sure that the class works with the default constructor.
-* 
-*/
+
 public class MainSpreader implements NewsSpreader {
 	/** Map containing blocked words, with the option to replace with # if value is true */
 	Map<String, Boolean> blockedWords;
@@ -35,14 +32,16 @@ public class MainSpreader implements NewsSpreader {
 		receiver = new LinkedHashSet<NewsReceiver>();
 	}
 	
+	
 	@Override
 	public boolean registerTrustedSource(String source, String pwd){
 		if(source == null || pwd == null || pwd == "")
 			return false;
 
-		return trustedSources.put(source, getPasswordHash(pwd)) != null;
+		return trustedSources.put(source, getPasswordHash(pwd)) == null;
 	}
 	
+
 	@Override
 	public String spreadNews(String news, String source, String pwd) throws NewsSpreaderException {	
 		if(trustedSources.get(source) == null)
@@ -56,10 +55,14 @@ public class MainSpreader implements NewsSpreader {
 		
 		//Broadcast message to all receiver
 		BCMessage bcmessage = new BCMessage(news, source, LocalDateTime.now(), topic);
-		receiver.forEach((b) -> b.receiveNews(this, bcmessage));
+		receiver.forEach((r) -> {
+			if(r.getTopics().contains(topic))
+				r.receiveNews(this, bcmessage);
+		});
 
 		return bcmessage.toString();
 	}
+
 
 	@Override
 	public boolean blockWord(String contents, boolean redact) {
@@ -69,6 +72,7 @@ public class MainSpreader implements NewsSpreader {
 		return blockedWords.put(contents, redact) != null;
 	}
 
+
 	@Override
 	public boolean unblockWord(String contents) {
 		if(contents == null || contents == "")
@@ -77,16 +81,22 @@ public class MainSpreader implements NewsSpreader {
 		return blockedWords.remove(contents) != null;
 	}
 
+
 	@Override
 	public boolean registerNewsReceiver(NewsReceiver newsReceiver) {
 		return newsReceiver == null ? false : receiver.add(newsReceiver);
 	}
+
 
 	@Override
 	public boolean unregisterNewsReceiver(NewsReceiver newsReceiver) {
 		return newsReceiver == null ? false : receiver.remove(newsReceiver);
 	}
 
+
+
+	//--------private helper methods
+	//-------------------------------------------------------------
 	/** returns the MD5 hash of the password */
 	private String getPasswordHash(String password){
 		String generatedPassword = null;
@@ -117,6 +127,7 @@ public class MainSpreader implements NewsSpreader {
 		return generatedPassword;
 	}
 
+
 	/** returns the topic contained in the message, if exists */
 	private Topic getTopicFromMessage(String message){
 		//Topic should be at the end proceeded by a hashtag
@@ -141,8 +152,12 @@ public class MainSpreader implements NewsSpreader {
 		return topic;
 	}
 
+
+	/** replaced blocked words in message or throws an Exception if needed */
 	private String censorBlockedWords(String message, String source) throws NewsSpreaderException{
 		for(String word : blockedWords.keySet()){
+			word = word.toLowerCase();
+
 			if(message.contains(word)){
 				//found word to censor
 
@@ -152,7 +167,7 @@ public class MainSpreader implements NewsSpreader {
 				}
 	
 				//censoring with hashtag
-				message = message.replace(word, "#");
+				message = message.replace("(?i)" + word, "#");
 			}
 		}
 

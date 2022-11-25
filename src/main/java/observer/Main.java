@@ -10,11 +10,13 @@ import observer.spreader.NewsSpreader;
 
 public class Main {
     public static void main(String[] args) {
-        RandomNewsSource krone = new RandomNewsSource("Krone", "1234");
         NewsSpreader broadcaster = new MainSpreader();
+        RandomNewsSource krone = new RandomNewsSource("Krone", "1234");
+        
 
         krone.registerInNewsSpreader(broadcaster);
         krone.sendNews(krone.generateMessage());
+        //no messages received yet, because there are no receiver subscribed
 
         NewsReceiver fileReceiver = new NewsReceiverFile();
         NewsReceiver cmdReceiver = new NewsReceiverCommandLine();
