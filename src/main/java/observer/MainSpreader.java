@@ -131,30 +131,30 @@ public class MainSpreader implements NewsSpreader {
 		//Topic should be at the end proceeded by a hashtag
 		Topic topic = Topic.Other;
 
-		String[] tmp = message.split("#");
-		
-		if(tmp.length == 2){
-			//found exactly 1 topic
-			String topic_s = tmp[1];
-			topic_s = topic_s.replace("#", "");
+		String regex = "(?!(?<=[#]))" + 	//negetive lookahead for positive lookbehind #
+			"\\b[^#]+\\b";					//match if not starting with #
 
-			try{
-				topic = Topic.valueOf(topic_s);
-			}
-			catch(Exception e){
-				//Parse exeption, Illegal Argument
-				topic = Topic.Other;
-			}
+
+		String topic_s = message.replaceAll(regex, "");
+		topic_s = topic_s.replaceAll("[^a-zA-Z\\d]", "");	//replace non alphanumeric
+
+		try{
+			topic = Topic.valueOf(topic_s);
 		}
+		catch(Exception e){
+			//Parse exeption, Illegal Argument
+			topic = Topic.Other;
+		}
+		
 
 		return topic;
 	}
 
 
 	/** replaced blocked words in message or throws an Exception if needed */
-	private String censorBlockedWords(String message, String source) throws NewsSpreaderException{
+	private String censorBlockedWords(String news, String source) throws NewsSpreaderException{
 		for(String word : blockedWords.keySet()){
-			if(message.toLowerCase().contains(word.toLowerCase())){
+			if(news.toLowerCase().contains(word.toLowerCase())){
 				//found word to censor
 
 				if(blockedWords.get(word).equals(false)){
@@ -162,11 +162,15 @@ public class MainSpreader implements NewsSpreader {
 					throw new BlockedContentException(source);
 				}
 	
+				String regex = "(?i)" +			//case insensitive
+					"\\b" + word + "\\b" + 		//bad word in boundaries
+					"(?=[^a-zA-Z\\d:])";		//positive lookahead for single char not^ letter or number
+
 				//censoring with hashtag
-				message = message.replace("(?i)\\b" + word + "[ ,.<>-_]?\\b", "#");
+				news = news.replaceAll(regex, "#");
 			}
 		}
 
-		return message;
+		return news;
 	}
 }

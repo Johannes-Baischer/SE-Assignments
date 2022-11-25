@@ -1,12 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: observer.NewsSpreaderBasicTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.042 s <<< FAILURE! - in observer.NewsSpreaderBasicTest
-testBlocking  Time elapsed: 0.035 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: The word "bad" was not redacted ==> expected: <# or too #, badass> but was: <bad or too bad, badass>
-	at observer.NewsSpreaderBasicTest.testBlocking(NewsSpreaderBasicTest.java:105)
-
-testSpreadNews  Time elapsed: 0.002 s  <<< FAILURE!
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.053 s <<< FAILURE! - in observer.NewsSpreaderBasicTest
+testSpreadNews  Time elapsed: 0.01 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: Unexpected exception from spreadNews (no redacting): News spreader: Blocked content: InitSource
 	at observer.NewsSpreaderBasicTest.testSpreadNews(NewsSpreaderBasicTest.java:68)
 

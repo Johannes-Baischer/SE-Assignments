@@ -32,7 +32,7 @@ public abstract class NewsSource {
     /**
      * Sends a Message to all NewsSpreader this NewsSource has subscribed to
      * @param message message to be sent; 
-     * add #TOPICNAME at the end for topic destinction, Topic.Other if no topic specified
+     * add single #TOPICNAME in message for topic destinction, Topic.Other if no topic specified
      */
     public void sendNews(String message){
         broadcasts.forEach((b) -> {
