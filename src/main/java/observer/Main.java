@@ -22,9 +22,19 @@ public class Main {
         krone.sendNews(krone.generateMessage());
         krone.sendNews(krone.generateMessage());
 
-        broadcaster.blockWord("Sport", true);
+        broadcaster.blockWord("Bad", false);
+        broadcaster.blockWord("bomb", true);
 
         krone.sendNews(krone.generateMessage());
         krone.sendNews(krone.generateMessage());
+
+
+        cmdReceiver.addTopic(null);
+        krone.sendNews(null);
+
+        cmdReceiver.subscribeToBroadcast(null);
+
+        krone.sendNews(krone.generateMessage());
+        krone.sendNews("A bombshell new piece of news regarding apple pie.");
     }
 }

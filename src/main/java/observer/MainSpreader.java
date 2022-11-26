@@ -99,25 +99,24 @@ public class MainSpreader implements NewsSpreader {
 	private String getPasswordHash(String password){
 		String generatedPassword = null;
 
-		try 
-		{
-		// Create MessageDigest instance for MD5
-		MessageDigest md = MessageDigest.getInstance("MD5");
+		try {
+			// Create MessageDigest instance for MD5
+			MessageDigest md = MessageDigest.getInstance("MD5");
 
-		// Add password bytes to digest
-		md.update(password.getBytes());
+			// Add password bytes to digest
+			md.update(password.getBytes());
 
-		// Get the hash's bytes
-		byte[] bytes = md.digest();
+			// Get the hash's bytes
+			byte[] bytes = md.digest();
 
-		// This bytes[] has bytes in decimal format. Convert it to hexadecimal format
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < bytes.length; i++) {
-			sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-		}
+			// This bytes[] has bytes in decimal format. Convert it to hexadecimal format
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
 
-		// Get complete hashed password in hex format
-		generatedPassword = sb.toString();
+			// Get complete hashed password in hex format
+			generatedPassword = sb.toString();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -144,8 +143,7 @@ public class MainSpreader implements NewsSpreader {
 		catch(Exception e){
 			//Parse exeption, Illegal Argument
 			topic = Topic.Other;
-		}
-		
+		}	
 
 		return topic;
 	}
@@ -153,24 +151,28 @@ public class MainSpreader implements NewsSpreader {
 
 	/** replaced blocked words in message or throws an Exception if needed */
 	private String censorBlockedWords(String news, String source) throws NewsSpreaderException{
+		String matchRegex, replaceRegex;
+
 		for(String word : blockedWords.keySet()){
-			if(news.toLowerCase().contains(word.toLowerCase())){
+			matchRegex = "(?i).*\\b" + word + "\\b.*";		//match if case insensitive, "word" between .* (any text)
+
+			replaceRegex = "(?i)" +			//case insensitive
+				"\\b" + word + "\\b" + 		//bad word in boundaries
+				"(?=[^a-zA-Z\\d:])";		//positive lookahead for single char not^ letter or number
+
+			if(news.matches(matchRegex)){
 				//found word to censor
 
 				if(blockedWords.get(word).equals(false)){
 					//no censoring, but not sending message at all
 					throw new BlockedContentException(source);
 				}
-	
-				String regex = "(?i)" +			//case insensitive
-					"\\b" + word + "\\b" + 		//bad word in boundaries
-					"(?=[^a-zA-Z\\d:])";		//positive lookahead for single char not^ letter or number
 
 				//censoring with hashtag
-				news = news.replaceAll(regex, "#");
+				news = news.replaceAll(replaceRegex, "#");
 			}
 		}
-
+		
 		return news;
 	}
 }
