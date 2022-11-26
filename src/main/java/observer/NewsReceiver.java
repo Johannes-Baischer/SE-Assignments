@@ -25,7 +25,7 @@ public abstract class NewsReceiver {
      * @return true if topic was added, false if topic already was subscribed to.
      */
     public boolean addTopic(Topic topic){
-        return topics.add(topic);
+        return topic == null ? false : topics.add(topic);
     }
 
     public Set<Topic> getTopics(){
@@ -38,6 +38,9 @@ public abstract class NewsReceiver {
      * @return false if already registered, true otherwise
      */
     public boolean subscribeToBroadcast(NewsSpreader broadcaster){
+        if(broadcaster == null)
+            return false;
+
         if(broadcaster.registerNewsReceiver(this)){
             subscriptions.add(broadcaster);
             return true;
@@ -52,6 +55,9 @@ public abstract class NewsReceiver {
      * @return false if not registered, true otherwise
      */
     protected boolean unsubscribeToBroadcast(NewsSpreader broadcaster){
+        if(broadcaster == null)
+            return false;
+
         if(broadcaster.unregisterNewsReceiver(this)){
             subscriptions.remove(broadcaster);
             return true;

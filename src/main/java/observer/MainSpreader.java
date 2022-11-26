@@ -42,6 +42,9 @@ public class MainSpreader implements NewsSpreader {
 		if(trustedSources.get(source).equals(getPasswordHash(pwd)) == false)
 			throw new AuthenticationException(source);
 
+		if(news == null)
+			throw new IllegalArgumentException(source);
+
 		Topic topic = getTopicFromMessage(news);
 		news = censorBlockedWords(news, source);
 		
@@ -52,7 +55,7 @@ public class MainSpreader implements NewsSpreader {
 				r.receiveNews(this, bcmessage);
 		});
 
-		return bcmessage.toString();
+		return news;
 	}
 
 
@@ -61,7 +64,10 @@ public class MainSpreader implements NewsSpreader {
 		if(contents == null || contents == "")
 			return false;
 
-		return blockedWords.put(contents, redact) != null;
+		if(!contents.matches("[a-zA-Z]+\\.?"))
+			return false;
+
+		return blockedWords.put(contents, redact) == null;
 	}
 
 
@@ -93,25 +99,24 @@ public class MainSpreader implements NewsSpreader {
 	private String getPasswordHash(String password){
 		String generatedPassword = null;
 
-		try 
-		{
-		// Create MessageDigest instance for MD5
-		MessageDigest md = MessageDigest.getInstance("MD5");
+		try {
+			// Create MessageDigest instance for MD5
+			MessageDigest md = MessageDigest.getInstance("MD5");
 
-		// Add password bytes to digest
-		md.update(password.getBytes());
+			// Add password bytes to digest
+			md.update(password.getBytes());
 
-		// Get the hash's bytes
-		byte[] bytes = md.digest();
+			// Get the hash's bytes
+			byte[] bytes = md.digest();
 
-		// This bytes[] has bytes in decimal format. Convert it to hexadecimal format
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < bytes.length; i++) {
-			sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-		}
+			// This bytes[] has bytes in decimal format. Convert it to hexadecimal format
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
 
-		// Get complete hashed password in hex format
-		generatedPassword = sb.toString();
+			// Get complete hashed password in hex format
+			generatedPassword = sb.toString();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -125,44 +130,49 @@ public class MainSpreader implements NewsSpreader {
 		//Topic should be at the end proceeded by a hashtag
 		Topic topic = Topic.Other;
 
-		String[] tmp = message.split("#");
-		
-		if(tmp.length == 2){
-			//found exactly 1 topic
-			String topic_s = tmp[1];
-			topic_s = topic_s.replace("#", "");
+		String regex = "(?!(?<=[#]))" + 	//negetive lookahead for positive lookbehind #
+			"\\b[^#]+\\b";					//match if not starting with #
 
-			try{
-				topic = Topic.valueOf(topic_s);
-			}
-			catch(Exception e){
-				//Parse exeption, Illegal Argument
-				topic = Topic.Other;
-			}
+
+		String topic_s = message.replaceAll(regex, "");
+		topic_s = topic_s.replaceAll("[^a-zA-Z\\d]", "");	//replace non alphanumeric
+
+		try{
+			topic = Topic.valueOf(topic_s);
 		}
+		catch(Exception e){
+			//Parse exeption, Illegal Argument
+			topic = Topic.Other;
+		}	
 
 		return topic;
 	}
 
 
 	/** replaced blocked words in message or throws an Exception if needed */
-	private String censorBlockedWords(String message, String source) throws NewsSpreaderException{
-		for(String word : blockedWords.keySet()){
-			word = word.toLowerCase();
+	private String censorBlockedWords(String news, String source) throws NewsSpreaderException{
+		String matchRegex, replaceRegex;
 
-			if(message.contains(word)){
+		for(String word : blockedWords.keySet()){
+			matchRegex = "(?i).*\\b" + word + "\\b.*";		//match if case insensitive, "word" between .* (any text)
+
+			replaceRegex = "(?i)" +			//case insensitive
+				"\\b" + word + "\\b" + 		//bad word in boundaries
+				"(?=[^a-zA-Z\\d:])";		//positive lookahead for single char not^ letter or number
+
+			if(news.matches(matchRegex)){
 				//found word to censor
 
 				if(blockedWords.get(word).equals(false)){
 					//no censoring, but not sending message at all
 					throw new BlockedContentException(source);
 				}
-	
+
 				//censoring with hashtag
-				message = message.replace("(?i)" + word, "#");
+				news = news.replaceAll(replaceRegex, "#");
 			}
 		}
-
-		return message;
+		
+		return news;
 	}
 }

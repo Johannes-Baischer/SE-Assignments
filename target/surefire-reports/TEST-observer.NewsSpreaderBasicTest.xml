@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="observer.NewsSpreaderBasicTest" time="0.031" tests="3" errors="0" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="observer.NewsSpreaderBasicTest" time="0.068" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AT"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\Johan\AppData\Local\Temp\surefire492215705107344616\surefirebooter11114953084487282201.jar C:\Users\Johan\AppData\Local\Temp\surefire492215705107344616 2022-11-25T01-27-34_724-jvmRun1 surefire16897121518517252298tmp surefire_04761850668400924986tmp"/>
+    <property name="sun.java.command" value="C:\Users\Johan\AppData\Local\Temp\surefire10768932091752942104\surefirebooter9502849446177237831.jar C:\Users\Johan\AppData\Local\Temp\surefire10768932091752942104 2022-11-26T10-39-07_921-jvmRun1 surefire4239856724159036868tmp surefire_012298408484686742877tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\GitHub\a6-res-sew22-s1086240_s1054335\target\test-classes;C:\GitHub\a6-res-sew22-s1086240_s1054335\target\classes;C:\Users\Johan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.0\junit-jupiter-engine-5.4.0.jar;C:\Users\Johan\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\Johan\.m2\repository\org\junit\platform\junit-platform-engine\1.4.0\junit-platform-engine-1.4.0.jar;C:\Users\Johan\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\Johan\.m2\repository\org\junit\platform\junit-platform-commons\1.4.0\junit-platform-commons-1.4.0.jar;C:\Users\Johan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.0\junit-jupiter-api-5.4.0.jar;C:\Users\Johan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.4.0\junit-jupiter-params-5.4.0.jar;C:\Users\Johan\.m2\repository\plus\fbi\sweng\as\Observer_Test\0.0.1-SNAPSHOT\Observer_Test-0.0.1-SNAPSHOT-tests.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Johan\AppData\Local\Temp\surefire492215705107344616\surefirebooter11114953084487282201.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Johan\AppData\Local\Temp\surefire10768932091752942104\surefirebooter9502849446177237831.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.2+8"/>
@@ -57,18 +57,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testBlocking" classname="observer.NewsSpreaderBasicTest" time="0.022">
-    <failure message="blockWord(&quot;bad&quot;, true); should return true ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: blockWord("bad", true); should return true ==> expected: <true> but was: <false>
-	at observer.NewsSpreaderBasicTest.testBlocking(NewsSpreaderBasicTest.java:89)
-]]></failure>
-  </testcase>
-  <testcase name="testFailedRegister" classname="observer.NewsSpreaderBasicTest" time="0.001"/>
-  <testcase name="testSpreadNews" classname="observer.NewsSpreaderBasicTest" time="0.004">
-    <failure message="Should throw IllegalArgumentException ==&gt; Unexpected exception type thrown ==&gt; expected: &lt;java.lang.IllegalArgumentException&gt; but was: &lt;java.lang.NullPointerException&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Should throw IllegalArgumentException ==> Unexpected exception type thrown ==> expected: <java.lang.IllegalArgumentException> but was: <java.lang.NullPointerException>
-	at observer.NewsSpreaderBasicTest.testSpreadNews(NewsSpreaderBasicTest.java:58)
-Caused by: java.lang.NullPointerException: Cannot invoke "String.split(String)" because "message" is null
-	at observer.NewsSpreaderBasicTest.lambda$testSpreadNews$0(NewsSpreaderBasicTest.java:58)
-	at observer.NewsSpreaderBasicTest.testSpreadNews(NewsSpreaderBasicTest.java:58)
-]]></failure>
-  </testcase>
+  <testcase name="testBlocking" classname="observer.NewsSpreaderBasicTest" time="0.054"/>
+  <testcase name="testFailedRegister" classname="observer.NewsSpreaderBasicTest" time="0"/>
+  <testcase name="testSpreadNews" classname="observer.NewsSpreaderBasicTest" time="0.004"/>
 </testsuite>

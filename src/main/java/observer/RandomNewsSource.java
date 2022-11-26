@@ -21,19 +21,19 @@ public class RandomNewsSource extends NewsSource {
         switch(topic){
             case Sport:
                 news = new String[]{
-                    "Sport ", "Car ", "Football ", "Baseball "
+                    "Sport ", "Car ", "Football ", "Baseball ", "Bad "
                 };
                 break;
 
             case Politics:
                 news = new String[]{
-                    "Democracy ", "World ", "Climate ", "Current "
+                    "Democracy ", "World ", "Climate ", "Current ", "Bad "
                 };
                 break;
 
             case Other:
                 news = new String[]{
-                    "Cats ", "Dogs ", "Kids ", "Fun "
+                    "Cats ", "Dogs ", "Kids ", "Fun ", "Bad "
                 };
                 break;
 
