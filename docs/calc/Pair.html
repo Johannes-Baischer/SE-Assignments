@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -133,6 +135,18 @@ loadScripts(document, 'script');</script>
 <h3 id="&lt;init&gt;(java.lang.Object,java.lang.Object)">Pair</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Pair</span><wbr><span class="parameters">(<a href="Pair.html" title="type parameter in Pair">F</a>&nbsp;first,
  <a href="Pair.html" title="type parameter in Pair">S</a>&nbsp;second)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class Pair<F, S>{
+    private F first;
+    private S second;
+    
+    public Pair(F first, S second){
+        this.first = first;
+        this.second = second;
+    }
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -147,12 +161,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getFirst()">
 <h3>getFirst</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Pair.html" title="type parameter in Pair">F</a></span>&nbsp;<span class="element-name">getFirst</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public F getFirst() {
+    return first;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="getSecond()">
 <h3>getSecond</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Pair.html" title="type parameter in Pair">S</a></span>&nbsp;<span class="element-name">getSecond</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public S getSecond() {
+    return second;
+}   
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
