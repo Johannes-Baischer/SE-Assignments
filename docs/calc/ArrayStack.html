@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -154,6 +156,18 @@ implements <a href="GenericStack.html" title="interface in calc">GenericStack</a
 <section class="detail" id="&lt;init&gt;(int)">
 <h3>ArrayStack</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ArrayStack</span><wbr><span class="parameters">(int&nbsp;size)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class ArrayStack&lt;E&gt; implements GenericStack;E&gt; {
+    private E[] stack;
+    private int counter; // used to keep track of elements
+        
+    public ArrayStack(int size) {
+        stack = (E[]) new Object[size];
+        counter = 0;
+    }
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -173,6 +187,21 @@ implements <a href="GenericStack.html" title="interface in calc">GenericStack</a
 <dt>Specified by:</dt>
 <dd><code><a href="GenericStack.html#pop()">pop</a></code>&nbsp;in interface&nbsp;<code><a href="GenericStack.html" title="interface in calc">GenericStack</a>&lt;<a href="ArrayStack.html" title="type parameter in ArrayStack">E</a>&gt;</code></dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public E pop() {
+    if (isEmpty())
+        throw new RuntimeException("Tried to pop an empty Stack!");
+    
+    E item = null;
+    counter--;
+    item = stack[counter];
+    stack[counter] = null;
+    
+    return item;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -184,6 +213,16 @@ implements <a href="GenericStack.html" title="interface in calc">GenericStack</a
 <dt>Specified by:</dt>
 <dd><code><a href="GenericStack.html#peek()">peek</a></code>&nbsp;in interface&nbsp;<code><a href="GenericStack.html" title="interface in calc">GenericStack</a>&lt;<a href="ArrayStack.html" title="type parameter in ArrayStack">E</a>&gt;</code></dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public E peek() {
+    if (isEmpty())
+        throw new RuntimeException("Tried to peek an empty Stack!");
+    
+    return stack[counter - 1];
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -197,6 +236,13 @@ implements <a href="GenericStack.html" title="interface in calc">GenericStack</a
 <dt>Parameters:</dt>
 <dd><code>element</code> - : Element to add</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void push(E element) {
+    stack[counter++] = element;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -208,6 +254,13 @@ implements <a href="GenericStack.html" title="interface in calc">GenericStack</a
 <dt>Specified by:</dt>
 <dd><code><a href="GenericStack.html#isEmpty()">isEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="GenericStack.html" title="interface in calc">GenericStack</a>&lt;<a href="ArrayStack.html" title="type parameter in ArrayStack">E</a>&gt;</code></dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean isEmpty() {
+    return counter <= 0;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -218,6 +271,13 @@ implements <a href="GenericStack.html" title="interface in calc">GenericStack</a
 <dt>Specified by:</dt>
 <dd><code><a href="GenericStack.html#getSize()">getSize</a></code>&nbsp;in interface&nbsp;<code><a href="GenericStack.html" title="interface in calc">GenericStack</a>&lt;<a href="ArrayStack.html" title="type parameter in ArrayStack">E</a>&gt;</code></dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public int getSize(){
+    return counter;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
