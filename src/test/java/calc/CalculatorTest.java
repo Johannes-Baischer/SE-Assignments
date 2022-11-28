@@ -107,7 +107,7 @@ public class CalculatorTest {
         try {
             assertEquals(pair.getSecond(), calculator.calcPostfix(pair.getFirst()));
         } catch (CalcException e) {
-            //already caught wit assertDoesNotThrow
+            //already caught with assertDoesNotThrow
         }
     }
 
@@ -125,7 +125,7 @@ public class CalculatorTest {
         try {
             assertEquals(pair.getSecond(), calculator.calcInfix(pair.getFirst()));
         } catch (CalcException e) {
-            //already caught wit assertDoesNotThrow
+            //already caught with assertDoesNotThrow
         }
     }
 }
