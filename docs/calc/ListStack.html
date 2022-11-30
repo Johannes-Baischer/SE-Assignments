@@ -160,11 +160,13 @@ implements <a href="GenericStack.html" title="interface in calc">GenericStack</a
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ListStack</span>()</div>
 <!--CODE START-->
 <pre class="prettyprint"><code class="language-java">
-public class ListStack<E> implements GenericStack<E> {
-    private Node <E> top;
+public class ListStack&lt;E&gt; implements GenericStack&lt;E&gt; {
+    private Node &lt;E&gt; top;
+    private int size;
         
     public ListStack(){ 
         this.top = new Node<>(null, null);
+        size = 0;
     }
 </code></pre>
 <!--CODE END-->
@@ -193,8 +195,9 @@ public E pop() {
     if (isEmpty())
         throw new RuntimeException("Tried to pop an empty Stack!");
     
-    Node <E> nodeToPop = top;
+    Node &lt;E&gt; nodeToPop = top;
     top = top.getNext();
+    size--;
     return nodeToPop.getData();
 }
 </code></pre>
@@ -233,7 +236,7 @@ public E peek() {
 </dl>
 <!--CODE START-->
 <pre class="prettyprint"><code class="language-java">
-public void push(E element) { top = new Node<>(element, top); }
+public void push(E element) { top = new Node<>(element, top); size++; }
 </code></pre>
 <!--CODE END-->
 </section>
@@ -277,16 +280,16 @@ public int getSize(){ return size; }
 <dl class="notes">
 <!--CODE START-->
 <pre class="prettyprint"><code class="language-java"></code>
-private class Node <T> {
+private class Node &lt;T&gt; {
     private T data;
-    private Node <T> next;
+    private Node &lt;T&gt; next;
     
-    private Node(T data, Node <T> next) {
+    private Node(T data, Node &lt;T&gt; next) {
         this.data = data;
         this.next = next;
     }
     
-    private Node <T> getNext() { return next; }
+    private Node &lt;T&gt; getNext() { return next; }
     
     private boolean hasNext() { return next != null; }
     
