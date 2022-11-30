@@ -128,20 +128,20 @@ static Stream&lt;CalcMain&gt; calculatorProvider() {
 </dl>
 <!--CODE START-->
 <pre class="prettyprint"><code class="language-java">
-static Stream<Arguments> validPostfixProvider() {
+static Stream&ltArguments&gt validPostfixProvider() {
     return Stream.of(
         Arguments.of(
             new CalcMain(CalcMain.getListStack()), 
-            new Pair<String[], Double>(new String[]{"1", "2", "+", "9", "3", "/", "+"}, 6.0)),
+            new Pair&lt;String[], Double&gt;(new String[]{"1", "2", "+", "9", "3", "/", "+"}, 6.0)),
         Arguments.of(
             new CalcMain(CalcMain.getArrayStack(ARRAYSTACKSIZE)), 
-            new Pair<String[], Double>(new String[]{"1", "2", "+", "9", "3", "/", "+"}, 6.0)),
+            new Pair&lt;String[], Double&gt;(new String[]{"1", "2", "+", "9", "3", "/", "+"}, 6.0)),
         Arguments.of(
             new CalcMain(CalcMain.getListStack()),
-            new Pair<String[], Double>(new String[]{"1", "2", "+", "9", "+", "3", "/"}, 4.0)),
+            new Pair&lt;String[], Double&gt;(new String[]{"1", "2", "+", "9", "+", "3", "/"}, 4.0)),
         Arguments.of(
             new CalcMain(CalcMain.getArrayStack(ARRAYSTACKSIZE)),
-            new Pair<String[], Double>(new String[]{"1", "2", "+", "9", "+", "3", "/"}, 4.0))
+            new Pair&lt;String[], Double&gt;(new String[]{"1", "2", "+", "9", "+", "3", "/"}, 4.0))
     );
 }
 <br>
@@ -159,7 +159,7 @@ static Stream<Arguments> validPostfixProvider() {
 </dl>
 <!--CODE START-->
 <pre class="prettyprint"><code class="language-java">
-static Stream<Arguments> invalidPostfixProvider() {
+static Stream&lt;Arguments&gt;> invalidPostfixProvider() {
     return Stream.of(
         Arguments.of(
             new CalcMain(CalcMain.getListStack()), 
@@ -218,10 +218,10 @@ static Stream<Arguments> validInfixProvider() {
     return Stream.of(
         Arguments.of(
             new CalcMain(CalcMain.getListStack()), 
-            new Pair<String[], Double>(new String[]{"(", "1", "+", "1", ")", "*", "2", "-", "(", "9", "/", "3", ")"}, 1.0)),
+            new Pair&lt;String[], Double&gt;(new String[]{"(", "1", "+", "1", ")", "*", "2", "-", "(", "9", "/", "3", ")"}, 1.0)),
         Arguments.of(
             new CalcMain(CalcMain.getArrayStack(ARRAYSTACKSIZE)), 
-            new Pair<String[], Double>(new String[]{"(", "1", "+", "1", ")", "*", "2", "-", "(", "9", "/", "3", ")"}, 1.0))
+            new Pair&lt;String[], Double&gt;(new String[]{"(", "1", "+", "1", ")", "*", "2", "-", "(", "9", "/", "3", ")"}, 1.0))
     );
 }
 <br>
@@ -261,7 +261,7 @@ public void testCalcMain(CalcMain calculator){
 <pre class="prettyprint"><code class="language-java">
 @ParameterizedTest
 @MethodSource("validPostfixProvider")
-public void testValidPostfix(CalcMain calculator, Pair<String[], Double> pair) {
+public void testValidPostfix(CalcMain calculator, Pair&lt;String[], Double&gt; pair) {
     assertDoesNotThrow(() -> calculator.calcPostfix(pair.getFirst()));
 
     try {
@@ -307,7 +307,7 @@ public void testInvalidPostfix(CalcMain calculator, String[] calc) {
 <pre class="prettyprint"><code class="language-java">
 @ParameterizedTest
 @MethodSource("validInfixProvider")
-public void testValidInfix(CalcMain calculator, Pair<String[], Double> pair) {
+public void testValidInfix(CalcMain calculator, Pair&lt;String[], Double&gt; pair) {
     assertDoesNotThrow(() -> calculator.calcInfix(pair.getFirst()));
 
     try {
