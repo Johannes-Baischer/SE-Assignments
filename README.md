@@ -1,5 +1,5 @@
-[reslink]: https://github.com/sweng-plus/SE_AS_DECORATOR/actions/runs/3523342272
-[worklink]: https://github.com/sweng-plus/SE_AS_DECORATOR/actions/workflows/classroom.yml
+[reslink]: https://github.com/sweng-plus/a7-res-sew22-s1086240_s1054335/actions/runs/3619615841
+[worklink]: https://github.com/sweng-plus/a7-res-sew22-s1086240_s1054335/actions/workflows/classroom.yml
 [![Points badge](.github/badges/points.svg)][reslink] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Go to testing workflow][worklink]
 
 # Software Engineering Assignment
