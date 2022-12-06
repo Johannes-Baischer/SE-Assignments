@@ -5,33 +5,27 @@ import java.io.Reader;
 import java.io.Writer;
 
 /**
- * TODO: This class must be completed.
- * 
- *
+ * Main Encoder
  */
 public class MRMain implements MREncoding {
 	
 	@Override
 	public Reader getMorseReader(File file2read) {
-		// TODO Auto-generated method stub
-		return null;
+		return MorseTranslator.getInstance().getReader(file2read);
 	}
 
 	@Override
 	public Writer getROT13Writer(File file2Write) {
-		// TODO Auto-generated method stub
-		return null;
+		return ROT13Translator.getInstance().getWriter(file2Write);
 	}
 
 	@Override
 	public Reader getMorseReader(String string2read) {
-		// TODO Auto-generated method stub
-		return null;
+		return MorseTranslator.getInstance().getReader(string2read);
 	}
 
 	@Override
 	public Writer getROT13Writer() {
-		// TODO Auto-generated method stub
-		return null;
+		return ROT13Translator.getInstance().getWriter();
 	}
 }
