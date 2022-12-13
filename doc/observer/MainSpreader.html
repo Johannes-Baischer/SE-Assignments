@@ -194,7 +194,7 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <pre class="prettyprint"><code class="language-java">
 public class MainSpreader implements NewsSpreader {
         /** Map containing blocked words, with the option to replace with # if value is true */
-        Map&lt;String, Booleanglt; blockedWords;
+        Map&lt;String, Boolean&gt; blockedWords;
         /** Map containing NewsSource names with passwords as hashed values */
         Map&lt;String, String&gt; trustedSources;
         /** Set containing all NewsReceivers to be broadcasted to */
