@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,9 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">observer</a></div>
-<h1 title="Class MainSpreader" class="title">Class MainSpreader</h1>
+<!-- TITLE GITHUB -->
+<h1 title="Class MainSpreader" class="title"><a href="https://github.com/sweng-plus/a6-res-sew22-s1086240_s1054335/blob/main/src/main/java/observer/MainSpreader.java">MainSpreader (Github)</a></h1>
+<!------------------>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">observer.MainSpreader</div>
@@ -115,32 +119,54 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Registers a word to be blocked from spreading.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#registerNewsReceiver(observer.NewsReceiver)" class="member-name-link">registerNewsReceiver</a><wbr>(<a href="NewsReceiver.html" title="class in observer">NewsReceiver</a>&nbsp;newsReceiver)</code></div>
+<!----- CENSOR BLOCKED WORD ----->
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#censorBlockedWords" class="member-name-link">censorBlockedWords</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;news,
+        <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;source)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Replaces blocked Words in Message or throws an Exception</div>
+</div>
+<!---- / CENSOR BLOCKED WORDS ---->
+<!----- GET PASSWORD HASH ----->
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPasswordHash" class="member-name-link">getPasswordHash</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Return MD5 Hash of password</div>
+</div>
+<!---- / GET PASSWORD HASHS ---->
+<!----- GET TOPIC FROM MESSAGE ----->
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTopicFromMessage" class="member-name-link">getTopicFromMessage</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Return Topic contained in the Message</div>
+</div>
+<!---- / GET TOPIC FROM MESSAGE ---->
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#registerNewsReceiver(observer.NewsReceiver)" class="member-name-link">registerNewsReceiver</a><wbr>(<a href="NewsReceiver.html" title="class in observer">NewsReceiver</a>&nbsp;newsReceiver)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Registers a new NewsReceiver</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#registerTrustedSource(java.lang.String,java.lang.String)" class="member-name-link">registerTrustedSource</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;source,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#registerTrustedSource(java.lang.String,java.lang.String)" class="member-name-link">registerTrustedSource</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;source,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;pwd)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Registers a trusted news-source.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#spreadNews(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">spreadNews</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;news,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#spreadNews(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">spreadNews</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;news,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;source,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;pwd)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sends the `news` string to every registered news-receiver (respecting the blocking policy as configured with `blockContents`).</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unblockWord(java.lang.String)" class="member-name-link">unblockWord</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;contents)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unblockWord(java.lang.String)" class="member-name-link">unblockWord</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;contents)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Unblocks a word for spreading.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unregisterNewsReceiver(observer.NewsReceiver)" class="member-name-link">unregisterNewsReceiver</a><wbr>(<a href="NewsReceiver.html" title="class in observer">NewsReceiver</a>&nbsp;newsReceiver)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unregisterNewsReceiver(observer.NewsReceiver)" class="member-name-link">unregisterNewsReceiver</a><wbr>(<a href="NewsReceiver.html" title="class in observer">NewsReceiver</a>&nbsp;newsReceiver)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Unregisters a new NewsReceiver</div>
 </div>
 </div>
@@ -164,6 +190,28 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <section class="detail" id="&lt;init&gt;()">
 <h3>MainSpreader</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">MainSpreader</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class MainSpreader implements NewsSpreader {
+        /** Map containing blocked words, with the option to replace with # if value is true */
+        Map&lt;String, Booleanglt; blockedWords;
+        /** Map containing NewsSource names with passwords as hashed values */
+        Map&lt;String, String&gt; trustedSources;
+        /** Set containing all NewsReceivers to be broadcasted to */
+        Set&lt;NewsReceiver&gt; receiver;
+        
+        
+        // Default constructor must be present, you may add implementation if needed
+        public MainSpreader(){
+                blockedWords = new LinkedHashMap&lt;String, Boolean&gt;();
+                trustedSources = new LinkedHashMap&lt;String, String&gt;();
+                receiver = new LinkedHashSet&lt;NewsReceiver&gt;();
+        }
+                
+        (...)
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -191,6 +239,17 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <dt>Returns:</dt>
 <dd>false if source is null or already registered or if pwd is null or empty , true otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public boolean registerTrustedSource(String source, String pwd){
+	if(source == null || pwd == null || pwd == "")
+		return false;
+
+	return trustedSources.put(source, getPasswordHash(pwd)) == null;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -220,6 +279,33 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 </section>
 </li>
 <li>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public String spreadNews(String news, String source, String pwd) throws NewsSpreaderException {	
+	if(trustedSources.get(source) == null)
+		throw new UntrustedSourceException(source);
+
+	if(trustedSources.get(source).equals(getPasswordHash(pwd)) == false)
+		throw new AuthenticationException(source);
+
+	if(news == null)
+		throw new IllegalArgumentException(source);
+
+	Topic topic = getTopicFromMessage(news);
+	news = censorBlockedWords(news, source);
+		
+	//Broadcast message to all receiver
+	BCMessage bcmessage = new BCMessage(news, source, LocalDateTime.now(), topic);
+	receiver.forEach((r) -> {
+		if(r.getTopics().contains(topic))
+			r.receiveNews(this, bcmessage);
+	});
+
+	return news;
+}
+</code></pre>
+<!--CODE END-->
 <section class="detail" id="blockWord(java.lang.String,boolean)">
 <h3>blockWord</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">blockWord</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;contents,
@@ -237,6 +323,20 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <dt>Returns:</dt>
 <dd>true if successful, false for invalid arguments or if word2block is not a word</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public boolean blockWord(String contents, boolean redact) {
+	if(contents == null || contents == "")
+		return false;
+
+	if(!contents.matches("[a-zA-Z]+\\.?"))
+		return false;
+
+	return blockedWords.put(contents, redact) == null;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -253,6 +353,17 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <dt>Returns:</dt>
 <dd>true if parameter is valid and a word, false otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public boolean unblockWord(String contents) {
+	if(contents == null || contents == "")
+		return false;
+
+	return blockedWords.remove(contents) != null;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -269,6 +380,14 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <dt>Returns:</dt>
 <dd>false if NewsReceiver was already registered, true otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public boolean registerNewsReceiver(NewsReceiver newsReceiver) {
+        return newsReceiver == null ? false : receiver.add(newsReceiver);
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -285,8 +404,158 @@ implements <a href="NewsSpreader.html" title="interface in observer">NewsSpreade
 <dt>Returns:</dt>
 <dd>if the NewsReceiver was successfully removed, false if e.g. was not registered</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public boolean unregisterNewsReceiver(NewsReceiver newsReceiver) {
+	return newsReceiver == null ? false : receiver.remove(newsReceiver);
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
+<li>
+<section class="detail" id="unregisterNewsReceiver(observer.NewsReceiver)">
+<h3>unregisterNewsReceiver</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">unregisterNewsReceiver</span><wbr><span class="parameters">(<a href="NewsReceiver.html" title="class in observer">NewsReceiver</a>&nbsp;newsReceiver)</span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="NewsSpreader.html#unregisterNewsReceiver(observer.NewsReceiver)">NewsSpreader</a></code></span></div>
+<div class="block">Unregisters a new NewsReceiver</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="NewsSpreader.html#unregisterNewsReceiver(observer.NewsReceiver)">unregisterNewsReceiver</a></code>&nbsp;in interface&nbsp;<code><a href="NewsSpreader.html" title="interface in observer">NewsSpreader</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>newsReceiver</code> - NewsReceiver to be removed</dd>
+<dt>Returns:</dt>
+<dd>if the NewsReceiver was successfully removed, false if e.g. was not registered</dd>
+</dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public boolean unregisterNewsReceiver(NewsReceiver newsReceiver) {
+	return newsReceiver == null ? false : receiver.remove(newsReceiver);
+}
+</code></pre>
+<!--CODE END-->
+</section>
+</li>
+<!----- GET PASSWORD HASH ----->
+<li>
+<section class="detail" id="getPasswordHash">
+<h3>getPasswordHash</h3>
+<div class="member-signature"><span class="modifiers">private String getPasswordHash(String password)</span></div>
+<div class="block">Returns the MD5 hash of the password</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+private String getPasswordHash(String password){
+	String generatedPassword = null;
+
+	try {
+		// Create MessageDigest instance for MD5
+		MessageDigest md = MessageDigest.getInstance("MD5");
+
+		// Add password bytes to digest
+		md.update(password.getBytes());
+
+		// Get the hash's bytes
+		byte[] bytes = md.digest();
+
+		// This bytes[] has bytes in decimal format. Convert it to hexadecimal format
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < bytes.length; i++) {
+			sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+		}
+
+		// Get complete hashed password in hex format
+		generatedPassword = sb.toString();
+	} catch (NoSuchAlgorithmException e) {
+		e.printStackTrace();
+	}
+
+	return generatedPassword;
+}
+</code></pre>
+<!--CODE END-->
+</section>
+</li>
+<!---- / GET PASSWORD HASH ---->
+
+<!--------------------------------------------------------------->
+
+<!----- GET TOPIC FROM MESSAGE ----->
+<li>
+<section class="detail" id="getTopicFromMessage">
+<h3>getTopicFromMessage</h3>
+<div class="member-signature"><span class="modifiers">private Topic getTopicFromMessage(String message)</span></div>
+<div class="block">Returns the topic contained in the message, if exists</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+private Topic getTopicFromMessage(String message){
+	//Topic should be at the end proceeded by a hashtag
+	Topic topic = Topic.Other;
+
+	String regex = "(?!(?<=[#]))" + 	//negetive lookahead for positive lookbehind #
+		"\\b[^#]+\\b";					//match if not starting with #
+
+
+	String topic_s = message.replaceAll(regex, "");
+	topic_s = topic_s.replaceAll("[^a-zA-Z\\d]", "");	//replace non alphanumeric
+
+	try{
+		topic = Topic.valueOf(topic_s);
+	}
+	catch(Exception e){
+		//Parse exeption, Illegal Argument
+		topic = Topic.Other;
+	}	
+
+	return topic;
+}
+</code></pre>
+<!--CODE END-->
+</section>
+</li>
+<!---- / GET TOPIC FROM MESSAGE ---->
+
+<!--------------------------------------------------------------->
+
+<!----- CENSOR BLOCKED WORDS ----->
+<li>
+<section class="detail" id="censorBlockedWords">
+<h3>censorBlockedWords</h3>
+<div class="member-signature"><span class="modifiers">private String censorBlockedWords(String news, String source) throws NewsSpreaderException</span></div>
+<div class="block">Replaces blocked words in message or throws an Exception if needed</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+private String censorBlockedWords(String news, String source) throws NewsSpreaderException{
+	String matchRegex, replaceRegex;
+
+	for(String word : blockedWords.keySet()){
+		matchRegex = "(?i).*\\b" + word + "\\b.*";		//match if case insensitive, "word" between .* (any text)
+
+		replaceRegex = "(?i)" +			//case insensitive
+			"\\b" + word + "\\b" + 		//bad word in boundaries
+			"(?=[^a-zA-Z\\d:])";		//positive lookahead for single char not^ letter or number
+
+		if(news.matches(matchRegex)){
+			//found word to censor
+
+			if(blockedWords.get(word).equals(false)){
+				//no censoring, but not sending message at all
+				throw new BlockedContentException(source);
+			}
+
+			//censoring with hashtag
+			news = news.replaceAll(replaceRegex, "#");
+		}
+	}
+		
+	return news;
+}
+</code></pre>
+<!--CODE END-->
+</section>
+</li>
+<!---- / CENSOR BLOCKED WORDS ---->
 </ul>
 </section>
 </li>

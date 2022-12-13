@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,9 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">observer</a></div>
-<h1 title="Interface NewsSpreader" class="title">Interface NewsSpreader</h1>
+<!-- TITLE GITHUB -->
+<h1 title="Interface NewsSpreader" class="title"><a href="https://github.com/sweng-plus/a6-res-sew22-s1086240_s1054335/blob/main/src/main/java/observer/NewsSpreader.java">Interface NewsSpreader (Github)</a></h1>
+<!------------------>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
@@ -154,6 +158,11 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>false if source is null or already registered or if pwd is null or empty , true otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean registerTrustedSource(String source, String pwd);
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -167,6 +176,11 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>false if NewsReceiver was already registered, true otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean registerNewsReceiver(NewsReceiver newsReceiver);
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -180,6 +194,11 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>if the NewsReceiver was successfully removed, false if e.g. was not registered</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean unregisterNewsReceiver(NewsReceiver newsReceiver);     
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -197,6 +216,11 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>true if successful, false for invalid arguments or if word2block is not a word</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean blockWord(String word2block, boolean redact); 
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -210,6 +234,11 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>true if parameter is valid and a word, false otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean unblockWord(String word2free);
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -234,6 +263,12 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="BlockedContentException.html" title="class in observer">BlockedContentException</a></code> - when authentication ok, but news contains blocked content with no redaction</dd>
 <dd><code><a href="NewsSpreaderException.html" title="class in observer">NewsSpreaderException</a></code></dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public String spreadNews(String news, String source, String pwd)
+        throws NewsSpreaderException;
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>

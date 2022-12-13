@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,9 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">observer</a></div>
-<h1 title="Class NewsSource" class="title">Class NewsSource</h1>
+<!-- TITLE GITHUB -->
+<h1 title="Class NewsSource" class="title"><a href="https://github.com/sweng-plus/a6-res-sew22-s1086240_s1054335/blob/main/src/main/java/observer/NewsSource.java">NewsSource (Github)</a></h1>
+<!------------------>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">observer.NewsSource</div>
@@ -141,6 +145,23 @@ loadScripts(document, 'script');</script>
 <h3>NewsSource</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">NewsSource</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;password)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public abstract class NewsSource {
+    private Set&lt;NewsSpreader&gt; broadcasts;
+    private String name;
+    private String password;
+    
+    public NewsSource(String name, String password){
+        this.name = name;
+        this.password = password;
+        broadcasts = new LinkedHashSet&lt;NewsSpreader&gt;();
+    }
+        
+    (...)
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -162,6 +183,18 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd>false if source is null or already registered or if pwd is null or empty , true otherwise</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public boolean registerInNewsSpreader(NewsSpreader broadcast){
+    if(broadcast.registerTrustedSource(name, password)){
+        broadcasts.add(broadcast);
+        return true;
+    }
+
+    return false;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -174,6 +207,19 @@ loadScripts(document, 'script');</script>
 <dd><code>news</code> - message to be sent; 
  add single #TOPICNAME in message for topic destinction, Topic.Other if no topic specified</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void sendNews(String news){
+    broadcasts.forEach((b) -> {
+        try {
+            b.spreadNews(news, name, password);
+        } catch (Exception e) {
+            System.out.println("Error while spreading News \"" + news + "\" from " + name);
+        }
+    });
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>

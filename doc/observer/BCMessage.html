@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,9 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">observer</a></div>
-<h1 title="Class BCMessage" class="title">Class BCMessage</h1>
+<!-- TITLE GITHUB -->
+<h1 title="Class BCMessage" class="title"><a href="https://github.com/sweng-plus/a6-res-sew22-s1086240_s1054335/blob/main/src/main/java/observer/BCMessage.java">BCMessage (Github)</a></h1>
+<!------------------>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">observer.BCMessage</div>
@@ -158,6 +162,25 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;source,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html" title="class or interface in java.time" class="external-link">LocalDateTime</a>&nbsp;time,
  <a href="Topic.html" title="enum class in observer">Topic</a>&nbsp;topic)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class BCMessage {
+    private String message;
+    private String source;
+    private LocalDateTime time;
+    private Topic topic;
+    
+    public BCMessage(String message, String source, LocalDateTime time, Topic topic) {
+        this.message = message;
+        this.source = source;
+        this.time = time;
+        this.topic = topic;
+    }
+
+    (...)
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
@@ -172,48 +195,104 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getMessage()">
 <h3>getMessage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getMessage</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public String getMessage() {
+    return message;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="getSource()">
 <h3>getSource</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getSource</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public String getSource() {
+    return source;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="getTime()">
 <h3>getTime</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html" title="class or interface in java.time" class="external-link">LocalDateTime</a></span>&nbsp;<span class="element-name">getTime</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public LocalDateTime getTime() {
+    return time;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="getTopic()">
 <h3>getTopic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Topic.html" title="enum class in observer">Topic</a></span>&nbsp;<span class="element-name">getTopic</span>()</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Topic getTopic() {
+    return topic;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="setMessage(java.lang.String)">
 <h3>setMessage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setMessage</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void setMessage(String message) {
+    this.message = message;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="setSource(java.lang.String)">
 <h3>setSource</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setSource</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;source)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void setSource(String source) {
+    this.source = source;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="setTime(java.time.LocalDateTime)">
 <h3>setTime</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setTime</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDateTime.html" title="class or interface in java.time" class="external-link">LocalDateTime</a>&nbsp;time)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void setTime(LocalDateTime time) {
+    this.time = time;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
 <section class="detail" id="setTopic(observer.Topic)">
 <h3>setTopic</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setTopic</span><wbr><span class="parameters">(<a href="Topic.html" title="enum class in observer">Topic</a>&nbsp;topic)</span></div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public void setTopic(Topic topic) {
+    this.topic = topic;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -224,6 +303,14 @@ loadScripts(document, 'script');</script>
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public String toString() {
+    return "BCMessage [message=" + message + ", source=" + source + ", time=" + time + ", topic=" + topic + "]";
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>
