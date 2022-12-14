@@ -43,4 +43,9 @@ public abstract class NewsSource {
             }
         });
     }
+
+    /**
+     * @return news to be sent
+     */
+    public abstract String generateNews();
 }

@@ -7,7 +7,7 @@ public class Main {
         
 
         krone.registerInNewsSpreader(broadcaster);
-        krone.sendNews(krone.generateMessage());
+        krone.sendNews(krone.generateNews());
         //no messages received yet, because there are no receiver subscribed
 
         NewsReceiver fileReceiver = new NewsReceiverFile();
@@ -19,14 +19,14 @@ public class Main {
         cmdReceiver.addTopic(Topic.Sport);
         cmdReceiver.addTopic(Topic.Other);
 
-        krone.sendNews(krone.generateMessage());
-        krone.sendNews(krone.generateMessage());
+        krone.sendNews(krone.generateNews());
+        krone.sendNews(krone.generateNews());
 
         broadcaster.blockWord("Bad", false);
         broadcaster.blockWord("bomb", true);
 
-        krone.sendNews(krone.generateMessage());
-        krone.sendNews(krone.generateMessage());
+        krone.sendNews(krone.generateNews());
+        krone.sendNews(krone.generateNews());
 
 
         cmdReceiver.addTopic(null);
@@ -34,7 +34,7 @@ public class Main {
 
         cmdReceiver.subscribeToBroadcast(null);
 
-        krone.sendNews(krone.generateMessage());
+        krone.sendNews(krone.generateNews());
         krone.sendNews("A bombshell new piece of news regarding apple pie.");
     }
 }

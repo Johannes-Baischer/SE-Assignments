@@ -12,7 +12,7 @@ public class RandomNewsSource extends NewsSource {
      * Generated a random message for a random topic
      * @return Generated message
      */
-    public String generateMessage(){
+    public String generateNews(){
         final int MESSAGEWORDCOUNT = 10;
 
         Topic topic = Topic.values()[new Random().nextInt(Topic.values().length)];
