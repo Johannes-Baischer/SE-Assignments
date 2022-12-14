@@ -414,30 +414,6 @@ public boolean unregisterNewsReceiver(NewsReceiver newsReceiver) {
 <!--CODE END-->
 </section>
 </li>
-<li>
-<section class="detail" id="unregisterNewsReceiver(observer.NewsReceiver)">
-<h3>unregisterNewsReceiver</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">unregisterNewsReceiver</span><wbr><span class="parameters">(<a href="NewsReceiver.html" title="class in observer">NewsReceiver</a>&nbsp;newsReceiver)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="NewsSpreader.html#unregisterNewsReceiver(observer.NewsReceiver)">NewsSpreader</a></code></span></div>
-<div class="block">Unregisters a new NewsReceiver</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="NewsSpreader.html#unregisterNewsReceiver(observer.NewsReceiver)">unregisterNewsReceiver</a></code>&nbsp;in interface&nbsp;<code><a href="NewsSpreader.html" title="interface in observer">NewsSpreader</a></code></dd>
-<dt>Parameters:</dt>
-<dd><code>newsReceiver</code> - NewsReceiver to be removed</dd>
-<dt>Returns:</dt>
-<dd>if the NewsReceiver was successfully removed, false if e.g. was not registered</dd>
-</dl>
-<!--CODE START-->
-<pre class="prettyprint"><code class="language-java">
-@Override
-public boolean unregisterNewsReceiver(NewsReceiver newsReceiver) {
-	return newsReceiver == null ? false : receiver.remove(newsReceiver);
-}
-</code></pre>
-<!--CODE END-->
-</section>
-</li>
 <!----- GET PASSWORD HASH ----->
 <li>
 <section class="detail" id="getPasswordHash">
