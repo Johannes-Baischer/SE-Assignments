@@ -157,8 +157,7 @@ public class MainSpreader implements NewsSpreader {
 			matchRegex = "(?i).*\\b" + word + "\\b.*";		//match if case insensitive, "word" between .* (any text)
 
 			replaceRegex = "(?i)" +			//case insensitive
-				"\\b" + word + "\\b" + 		//bad word in boundaries
-				"(?=[^a-zA-Z\\d:])";		//positive lookahead for single char not^ letter or number
+				"\\b" + word + "\\b"; 		//bad word in boundaries
 
 			if(news.matches(matchRegex)){
 				//found word to censor
