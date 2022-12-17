@@ -29,6 +29,18 @@
       <version>5.4.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.5.1</version>
+      <scope>test</scope>
+  </dependency>
+  <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-junit5</artifactId>
+      <version>4.0.16-alpha</version>
+      <scope>test</scope>
+  </dependency>
   </dependencies>
 
   <build>
@@ -90,7 +102,7 @@
           <artifactId>javafx-maven-plugin</artifactId>
           <version>0.0.3</version>
           <configuration>
-            <mainClass>mvc.Main</mainClass>
+            <mainClass>mvc.view.MainFX</mainClass>
           </configuration>
         </plugin>
       </plugins>
@@ -120,12 +132,12 @@
         </executions>
         <configuration>
           <excludes>
-              <!-- Exclude testting Main.java -->
-              <!-- but not MainFX-->
-              <exclude>**/Main.class</exclude>
-              <exclude>**/Main*$*.class</exclude>
+            <!-- Exclude testting Main.java -->
+            <!-- but not MainFX-->
+            <exclude>**/Main.class</exclude>
+            <exclude>**/Main*$*.class</exclude>
           </excludes>
-       </configuration>
+        </configuration>
       </plugin>
     </plugins>
   </build>
