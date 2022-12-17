@@ -1,4 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: mvc.viewTest.MainFXTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.684 s - in mvc.viewTest.MainFXTest
+Tests run: 4, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 10.118 s <<< FAILURE! - in mvc.viewTest.MainFXTest
+test_deleteBook{FxRobot}  Time elapsed: 8.102 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected size:<0> but was:<1> in:
+<[Book [title=TitleToDelete, author=AuthorToDelete, year=2020, isbn=1-123-23462-1]]>
+	at mvc.viewTest.MainFXTest.test_deleteBook(MainFXTest.java:85)
+
+test_addBook{FxRobot}  Time elapsed: 0.313 s  <<< ERROR!
+org.junit.platform.commons.PreconditionViolationException: Configuration error: You must configure at least one set of arguments for this @ParameterizedTest
+

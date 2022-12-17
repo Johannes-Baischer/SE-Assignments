@@ -15,6 +15,8 @@ public class Main {
 			}
 		};
 		t.start();
+
+		/* 
 		Thread.sleep(3000);
 
 		//has to be run on the JavaFX thread
@@ -81,5 +83,6 @@ public class Main {
 				}
 			}
 		});
+		*/
   	}
 }

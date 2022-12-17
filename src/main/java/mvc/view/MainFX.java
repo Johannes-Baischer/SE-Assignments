@@ -37,8 +37,9 @@ public class MainFX extends Application implements BookManagerObserver {
 
     bookList = FXCollections.observableArrayList(controller.getBooks());
     listView = new ListView<>(bookList);
+    listView.setId("lst_books");
+
     buttons = new LinkedHashMap<String, Button>();
-    
     root = new BorderPane();
 
     addButtons(root);
@@ -49,7 +50,8 @@ public class MainFX extends Application implements BookManagerObserver {
   @Override
   public void update(BCMessage message) {
     bookList = FXCollections.observableArrayList(message.getBooks());
-    listView = new ListView<>();
+    listView.getItems().clear();
+
     listView.setItems(bookList);
     root.setCenter(listView);
 
@@ -85,18 +87,23 @@ public class MainFX extends Application implements BookManagerObserver {
   private void addButtons(BorderPane root) {
     ToolBar toolBar = new ToolBar();
     
-    // Button to add a new book
+    // Create Buttons
     Button addButton = new Button("Add");
-    addButton.setOnAction(e -> addButtonClicked());
-
-    // Button to delete a selected book
     Button deleteButton = new Button("Delete");
-    deleteButton.setOnAction(e -> deleteButtonClicked());
-    deleteButton.setDisable(true);
-
-    // Button to edit a selected book
     Button editButton = new Button("Edit");
+
+    // Set id's for the buttons
+    addButton.setId("btn_add");
+    deleteButton.setId("btn_delete");
+    editButton.setId("btn_edit");
+
+    // add button handler
+    addButton.setOnAction(e -> addButtonClicked());
+    deleteButton.setOnAction(e -> deleteButtonClicked());
     editButton.setOnAction(e -> editButtonClicked());
+    
+    // Disable the buttons if there are no books in the list
+    deleteButton.setDisable(true);
     editButton.setDisable(true);
 
     // Add the buttons to the toolbar
@@ -122,6 +129,13 @@ public class MainFX extends Application implements BookManagerObserver {
     TextField authorField = new TextField();
     TextField yearField = new TextField();
     TextField isbnField = new TextField();
+
+    // Set id's for the fields
+    titleField.setId("txt_title");
+    authorField.setId("txt_author");
+    yearField.setId("txt_year");
+    isbnField.setId("txt_isbn");
+    
     // Set the prompt text
     titleField.setPromptText("Title");
     authorField.setPromptText("Author");
@@ -209,6 +223,13 @@ public class MainFX extends Application implements BookManagerObserver {
     TextField authorField = new TextField();
     TextField yearField = new TextField();
     TextField isbnField = new TextField();
+
+    // Set id's for the fields
+    titleField.setId("txt_title");
+    authorField.setId("txt_author");
+    yearField.setId("txt_year");
+    isbnField.setId("txt_isbn");
+
     // Set the prompt text
     titleField.setPromptText("Title");
     authorField.setPromptText("Author");
