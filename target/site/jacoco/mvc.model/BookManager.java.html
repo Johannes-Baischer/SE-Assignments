@@ -7,8 +7,8 @@ import java.util.Map;
 import mvc.controller.BCMessage;
 import mvc.controller.Book;
 
-<span class="nc" id="L10">public class BookManager extends BookManagerSubject{</span>
-<span class="nc" id="L11">    Map&lt;String, Book&gt; books = new LinkedHashMap&lt;String, Book&gt;();</span>
+<span class="fc" id="L10">public class BookManager extends BookManagerSubject{</span>
+<span class="fc" id="L11">    Map&lt;String, Book&gt; books = new LinkedHashMap&lt;String, Book&gt;();</span>
 
     /**
      * Adds a book to the list of books. If the book already exists, it will not be added.
@@ -16,12 +16,12 @@ import mvc.controller.Book;
      * @return true if the book was added, false if the book already exists
      */
     public boolean addBook(Book book) {
-<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (books.containsKey(book.getIsbn())) {</span>
-<span class="nc" id="L20">            return false;</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (books.containsKey(book.getIsbn())) {</span>
+<span class="fc" id="L20">            return false;</span>
         }
-<span class="nc" id="L22">        books.put(book.getIsbn(), book);</span>
-<span class="nc" id="L23">        notifyObservers(new BCMessage(this, getBooks()));</span>
-<span class="nc" id="L24">        return true;</span>
+<span class="fc" id="L22">        books.put(book.getIsbn(), book);</span>
+<span class="fc" id="L23">        notifyObservers(new BCMessage(this, getBooks()));</span>
+<span class="fc" id="L24">        return true;</span>
     }
 
     /**
@@ -30,13 +30,13 @@ import mvc.controller.Book;
      * @return true if the book was removed, false if the book does not exist
      */
     public boolean removeBook(Book book) {
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (!books.containsKey(book.getIsbn())) {</span>
-<span class="nc" id="L34">            return false;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (!books.containsKey(book.getIsbn())) {</span>
+<span class="fc" id="L34">            return false;</span>
         }
-<span class="nc" id="L36">        books.remove(book.getIsbn());</span>
+<span class="fc" id="L36">        books.remove(book.getIsbn());</span>
 
-<span class="nc" id="L38">        notifyObservers(new BCMessage(this, getBooks()));</span>
-<span class="nc" id="L39">        return true;</span>
+<span class="fc" id="L38">        notifyObservers(new BCMessage(this, getBooks()));</span>
+<span class="fc" id="L39">        return true;</span>
     }
 
     /**
@@ -45,7 +45,7 @@ import mvc.controller.Book;
      * @return true if the book was removed, false if the book does not exist
      */
     public boolean removeBook(String isbn_to_remove) {
-<span class="nc" id="L48">        return this.removeBook(new Book(&quot;&quot;, &quot;&quot;, &quot;&quot;, isbn_to_remove));</span>
+<span class="fc" id="L48">        return this.removeBook(new Book(&quot;&quot;, &quot;&quot;, &quot;&quot;, isbn_to_remove));</span>
     }
 
     /**
@@ -54,14 +54,14 @@ import mvc.controller.Book;
      * @return true if the book was edited, false if the book does not exist
      */
     public boolean editBook(String isbn_to_edit, Book book) {
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (!books.containsKey(isbn_to_edit)) {</span>
-<span class="nc" id="L58">            return false;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (!books.containsKey(isbn_to_edit)) {</span>
+<span class="fc" id="L58">            return false;</span>
         }
-<span class="nc" id="L60">        this.removeBook(isbn_to_edit);</span>
-<span class="nc" id="L61">        books.put(book.getIsbn(), book);</span>
+<span class="fc" id="L60">        this.removeBook(isbn_to_edit);</span>
+<span class="fc" id="L61">        books.put(book.getIsbn(), book);</span>
 
-<span class="nc" id="L63">        notifyObservers(new BCMessage(this, getBooks()));</span>
-<span class="nc" id="L64">        return true;</span>
+<span class="fc" id="L63">        notifyObservers(new BCMessage(this, getBooks()));</span>
+<span class="fc" id="L64">        return true;</span>
     }
 
     /**
@@ -69,7 +69,7 @@ import mvc.controller.Book;
      * @return collection of books
      */
     public Collection&lt;Book&gt; getBooks() {
-<span class="nc" id="L72">        return books.values();</span>
+<span class="fc" id="L72">        return books.values();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

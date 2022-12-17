@@ -118,6 +118,14 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <excludes>
+              <!-- Exclude testting Main.java -->
+              <!-- but not MainFX-->
+              <exclude>**/Main.class</exclude>
+              <exclude>**/Main*$*.class</exclude>
+          </excludes>
+       </configuration>
       </plugin>
     </plugins>
   </build>

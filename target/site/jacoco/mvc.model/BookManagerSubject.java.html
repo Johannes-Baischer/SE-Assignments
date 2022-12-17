@@ -6,37 +6,37 @@ import java.util.Collection;
 import mvc.controller.BCMessage;
 import mvc.controller.BookManagerObserver;
 
-<span class="nc" id="L9">public abstract class BookManagerSubject {</span>
-<span class="nc" id="L10">    Collection&lt;BookManagerObserver&gt; observers = new ArrayList&lt;BookManagerObserver&gt;();</span>
+<span class="fc" id="L9">public abstract class BookManagerSubject {</span>
+<span class="fc" id="L10">    Collection&lt;BookManagerObserver&gt; observers = new ArrayList&lt;BookManagerObserver&gt;();</span>
 
     /**
      * Adds an observer to the list of observers
      * @param observer The observer to add
      */
     public void addObserver(BookManagerObserver observer) {
-<span class="nc" id="L17">        observers.add(observer);</span>
-<span class="nc" id="L18">    }</span>
+<span class="fc" id="L17">        observers.add(observer);</span>
+<span class="fc" id="L18">    }</span>
 
     /**
      * Removes an observer from the list of observers
      * @param observer The observer to remove
      */
     public void removeObserver(BookManagerObserver observer) {
-<span class="nc" id="L25">        observers.remove(observer);</span>
-<span class="nc" id="L26">    }</span>
+<span class="fc" id="L25">        observers.remove(observer);</span>
+<span class="fc" id="L26">    }</span>
 
     /**
      * Notifies all observers that the state of the bookManager has changed
      * @param message The message containing the new state of the bookManager
      */
     public void notifyObservers(BCMessage message) {
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (BookManagerObserver observer : observers) {</span>
-<span class="nc" id="L34">            observer.update(message);</span>
-<span class="nc" id="L35">        }</span>
-<span class="nc" id="L36">    }</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for (BookManagerObserver observer : observers) {</span>
+<span class="fc" id="L34">            observer.update(message);</span>
+<span class="fc" id="L35">        }</span>
+<span class="fc" id="L36">    }</span>
 
     public Collection&lt;BookManagerObserver&gt; getObservers() {
-<span class="nc" id="L39">        return observers;</span>
+<span class="fc" id="L39">        return observers;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

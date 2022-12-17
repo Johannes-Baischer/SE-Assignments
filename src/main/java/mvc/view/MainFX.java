@@ -6,7 +6,6 @@ import java.util.Map;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -110,6 +109,9 @@ public class MainFX extends Application implements BookManagerObserver {
     buttons.put("Edit", editButton);
   }
 
+  /**
+   * Handler for the Add button
+   */
   private void addButtonClicked() {
     TextInputDialog dialog = new TextInputDialog();
     dialog.setHeaderText("Enter Book Info");
@@ -161,6 +163,9 @@ public class MainFX extends Application implements BookManagerObserver {
     }
   }
 
+  /**
+   * Handler for the Delete button
+   */
   private void deleteButtonClicked() {
     TextInputDialog dialog = new TextInputDialog();
     dialog.setHeaderText("Enter ISBN of Book to Delete");
@@ -191,6 +196,9 @@ public class MainFX extends Application implements BookManagerObserver {
     }
   }
 
+  /**
+   * Handler for the Edit button
+   */
   private void editButtonClicked() {
     TextInputDialog dialog = new TextInputDialog();
     dialog.setHeaderText("Edit Book Info");
@@ -222,6 +230,7 @@ public class MainFX extends Application implements BookManagerObserver {
     authorField.setText(selectedBook.getAuthor());
     yearField.setText(selectedBook.getYear());
     isbnField.setText(selectedBook.getIsbn());
+    String oldIsbn = selectedBook.getIsbn();
 
     // Add the fields to the dialog
     GridPane grid = new GridPane();
@@ -249,7 +258,7 @@ public class MainFX extends Application implements BookManagerObserver {
     }
 
     // Add the book to the model
-    if(controller.editBook(isbn, title, author, year, isbn) == false){
+    if(controller.editBook(oldIsbn, title, author, year, isbn) == false){
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText("Book not found");

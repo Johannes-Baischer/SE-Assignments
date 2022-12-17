@@ -17,6 +17,7 @@ public class Main {
 		t.start();
 		Thread.sleep(3000);
 
+		//has to be run on the JavaFX thread
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {

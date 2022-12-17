@@ -1,13 +1,7 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-MVC,mvc.controller,BCMessage,15,0,0,0,6,0,3,0,3,0
-MVC,mvc.controller,Book,53,0,0,0,19,0,10,0,10,0
-MVC,mvc.controller,BookManagerController,49,0,0,0,12,0,7,0,7,0
-MVC,mvc.view,MainFX,618,0,28,0,158,0,29,0,15,0
-MVC,mvc.model,BookManager,99,0,6,0,20,0,9,0,6,0
-MVC,mvc.model,BookManagerSubject,39,0,2,0,11,0,6,0,5,0
-MVC,mvc,Main,34,0,0,0,10,0,3,0,3,0
-MVC,mvc,Main.new Runnable() {...},23,0,0,0,8,0,2,0,2,0
-MVC,mvc,Main.new Runnable() {...},24,0,0,0,8,0,2,0,2,0
-MVC,mvc,Main.new Runnable() {...},17,0,0,0,8,0,2,0,2,0
-MVC,mvc,Main.new Runnable() {...},23,0,0,0,8,0,2,0,2,0
-MVC,mvc,Main.new Thread() {...},11,0,0,0,3,0,2,0,2,0
+MVC,mvc.controller,Book,0,53,0,0,0,19,0,10,0,10
+MVC,mvc.controller,BCMessage,0,15,0,0,0,6,0,3,0,3
+MVC,mvc.controller,BookManagerController,0,49,0,0,0,12,0,7,0,7
+MVC,mvc.view,MainFX,621,0,28,0,159,0,29,0,15,0
+MVC,mvc.model,BookManager,0,99,0,6,0,20,0,9,0,6
+MVC,mvc.model,BookManagerSubject,0,39,0,2,0,11,0,6,0,5
