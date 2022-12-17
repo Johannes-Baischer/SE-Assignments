@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="mvc.viewTest.MainFXTest" time="10.118" tests="4" errors="1" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="mvc.viewTest.MainFXTest" time="97.189" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AT"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\Johan\AppData\Local\Temp\surefire4180704771283144388\surefirebooter2100545743093685999.jar C:\Users\Johan\AppData\Local\Temp\surefire4180704771283144388 2022-12-17T22-13-39_224-jvmRun1 surefire4570836427516955013tmp surefire_05638922652964894233tmp"/>
+    <property name="sun.java.command" value="C:\Users\Johan\AppData\Local\Temp\surefire3187460208435688984\surefirebooter10816346391021024108.jar C:\Users\Johan\AppData\Local\Temp\surefire3187460208435688984 2022-12-18T00-44-11_437-jvmRun1 surefire1695743106650389998tmp surefire_03283924810519453600tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\GitHub\PLUS\SE\a8-res-sew22-s1086240_s1054335\target\test-classes;C:\GitHub\PLUS\SE\a8-res-sew22-s1086240_s1054335\target\classes;C:\Users\Johan\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\Johan\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13-win.jar;C:\Users\Johan\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\Johan\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13-win.jar;C:\Users\Johan\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\Johan\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13-win.jar;C:\Users\Johan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.0\junit-jupiter-engine-5.4.0.jar;C:\Users\Johan\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\Johan\.m2\repository\org\junit\platform\junit-platform-engine\1.4.0\junit-platform-engine-1.4.0.jar;C:\Users\Johan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.4.0\junit-jupiter-params-5.4.0.jar;C:\Users\Johan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.5.1\junit-jupiter-api-5.5.1.jar;C:\Users\Johan\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Johan\.m2\repository\org\junit\platform\junit-platform-commons\1.5.1\junit-platform-commons-1.5.1.jar;C:\Users\Johan\.m2\repository\org\testfx\testfx-junit5\4.0.16-alpha\testfx-junit5-4.0.16-alpha.jar;C:\Users\Johan\.m2\repository\org\testfx\testfx-core\4.0.16-alpha\testfx-core-4.0.16-alpha.jar;C:\Users\Johan\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Johan\.m2\repository\org\assertj\assertj-core\3.13.2\assertj-core-3.13.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Johan\AppData\Local\Temp\surefire4180704771283144388\surefirebooter2100545743093685999.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Johan\AppData\Local\Temp\surefire3187460208435688984\surefirebooter10816346391021024108.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.2+8"/>
@@ -57,134 +57,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="should_contain_Buttons{FxRobot}" classname="mvc.viewTest.MainFXTest" time="1.702"/>
-  <testcase name="test_deleteBook{FxRobot}" classname="mvc.viewTest.MainFXTest" time="8.102">
-    <failure message="&#10;Expected size:&lt;0&gt; but was:&lt;1&gt; in:&#10;&lt;[Book [title=TitleToDelete, author=AuthorToDelete, year=2020, isbn=1-123-23462-1]]&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Expected size:&lt;0&gt; but was:&lt;1&gt; in:&lt;[Book [title=TitleToDelete, author=AuthorToDelete, year=2020, isbn=1-123-23462-1]]&gt;	at mvc.viewTest.MainFXTest.test_deleteBook(MainFXTest.java:85)</failure>
-    <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/provider/NonBaseLocaleDataMetaInfo.
-	at org.jacoco.agent.rt.internal_035b120.CoverageTransformer.transform(CoverageTransformer.java:93)
-	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
-	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
-	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:541)
-	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
-	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1103)
-	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:621)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:632)
-	at java.base/java.lang.Class.forName(Class.java:545)
-	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:859)
-	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1084)
-	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1309)
-	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1393)
-	at java.base/sun.util.locale.provider.JRELocaleProviderAdapter.lambda$createSupportedLocaleString$13(JRELocaleProviderAdapter.java:479)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
-	at java.base/sun.util.locale.provider.JRELocaleProviderAdapter.createSupportedLocaleString(JRELocaleProviderAdapter.java:476)
-	at java.base/sun.util.locale.provider.JRELocaleProviderAdapter.createLanguageTagSet(JRELocaleProviderAdapter.java:456)
-	at java.base/sun.util.locale.provider.JRELocaleProviderAdapter.getLanguageTagSet(JRELocaleProviderAdapter.java:446)
-	at java.base/sun.util.locale.provider.JRELocaleProviderAdapter.lambda$getBreakIteratorProvider$0(JRELocaleProviderAdapter.java:150)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
-	at java.base/sun.util.locale.provider.JRELocaleProviderAdapter.getBreakIteratorProvider(JRELocaleProviderAdapter.java:146)
-	at java.base/sun.util.locale.provider.JRELocaleProviderAdapter.getLocaleServiceProvider(JRELocaleProviderAdapter.java:93)
-	at java.base/sun.util.locale.provider.LocaleProviderAdapter.findAdapter(LocaleProviderAdapter.java:289)
-	at java.base/sun.util.locale.provider.LocaleProviderAdapter.getAdapter(LocaleProviderAdapter.java:258)
-	at java.base/java.text.BreakIterator.createBreakInstance(BreakIterator.java:553)
-	at java.base/java.text.BreakIterator.getBreakInstance(BreakIterator.java:545)
-	at java.base/java.text.BreakIterator.getCharacterInstance(BreakIterator.java:508)
-	at java.base/java.text.BreakIterator.getCharacterInstance(BreakIterator.java:495)
-	at javafx.scene.text.HitInfo.<clinit>(HitInfo.java:69)
-	at javafx.scene.text.Text.hitTest(Text.java:1026)
-	at com.sun.javafx.scene.control.skin.Utils.computeClippedWrappedText(Utils.java:460)
-	at javafx.scene.control.skin.LabeledSkinBase.updateDisplayedText(LabeledSkinBase.java:1109)
-	at javafx.scene.control.skin.LabeledSkinBase.layoutLabelInArea(LabeledSkinBase.java:533)
-	at javafx.scene.control.skin.LabeledSkinBase.layoutLabelInArea(LabeledSkinBase.java:456)
-	at javafx.scene.control.skin.LabeledSkinBase.layoutChildren(LabeledSkinBase.java:440)
-	at javafx.scene.control.Control.layoutChildren(Control.java:601)
-	at javafx.scene.Parent.layout(Parent.java:1206)
-	at javafx.scene.Parent.layout(Parent.java:1213)
-	at javafx.scene.Parent.layout(Parent.java:1213)
-	at javafx.scene.Scene.doLayoutPass(Scene.java:576)
-	at javafx.scene.Scene.preferredSize(Scene.java:1748)
-	at javafx.scene.Scene$2.preferredSize(Scene.java:393)
-	at com.sun.javafx.scene.SceneHelper.preferredSize(SceneHelper.java:66)
-	at javafx.stage.Window$12.invalidated(Window.java:1086)
-	at javafx.beans.property.BooleanPropertyBase.markInvalid(BooleanPropertyBase.java:110)
-	at javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:145)
-	at javafx.stage.Window.setShowing(Window.java:1174)
-	at javafx.stage.Window.show(Window.java:1189)
-	at javafx.stage.Stage.show(Stage.java:273)
-	at javafx.stage.Stage.showAndWait(Stage.java:463)
-	at javafx.scene.control.HeavyweightDialog.showAndWait(HeavyweightDialog.java:162)
-	at javafx.scene.control.Dialog.showAndWait(Dialog.java:346)
-	at mvc.view.MainFX.addButtonClicked(MainFX.java:154)
-	at mvc.view.MainFX.lambda$addButtons$0(MainFX.java:101)
-	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
-	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
-	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
-	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
-	at javafx.event.Event.fireEvent(Event.java:198)
-	at javafx.scene.Node.fireEvent(Node.java:8890)
-	at javafx.scene.control.Button.fire(Button.java:203)
-	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:206)
-	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
-	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:218)
-	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
-	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238)
-	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
-	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
-	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
-	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
-	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
-	at javafx.event.Event.fireEvent(Event.java:198)
-	at javafx.scene.Scene$MouseHandler.process(Scene.java:3862)
-	at javafx.scene.Scene.processMouseEvent(Scene.java:1849)
-	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590)
-	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409)
-	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
-	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447)
-	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:412)
-	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446)
-	at com.sun.glass.ui.View.handleMouseEvent(View.java:556)
-	at com.sun.glass.ui.View.notifyMouse(View.java:942)
-	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
-	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:174)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: java.io.IOException: Error while instrumenting sun/util/resources/provider/NonBaseLocaleDataMetaInfo.
-	at org.jacoco.agent.rt.internal_035b120.core.instr.Instrumenter.instrumentError(Instrumenter.java:158)
-	at org.jacoco.agent.rt.internal_035b120.core.instr.Instrumenter.instrument(Instrumenter.java:108)
-	at org.jacoco.agent.rt.internal_035b120.CoverageTransformer.transform(CoverageTransformer.java:91)
-	... 105 more
-Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 61
-	at org.jacoco.agent.rt.internal_035b120.asm.ClassReader.<init>(ClassReader.java:195)
-	at org.jacoco.agent.rt.internal_035b120.asm.ClassReader.<init>(ClassReader.java:176)
-	at org.jacoco.agent.rt.internal_035b120.asm.ClassReader.<init>(ClassReader.java:162)
-	at org.jacoco.agent.rt.internal_035b120.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:279)
-	at org.jacoco.agent.rt.internal_035b120.core.instr.Instrumenter.instrument(Instrumenter.java:74)
-	at org.jacoco.agent.rt.internal_035b120.core.instr.Instrumenter.instrument(Instrumenter.java:106)
-	... 106 more
-]]></system-err>
-  </testcase>
-  <testcase name="should_contain_ListView{FxRobot}" classname="mvc.viewTest.MainFXTest" time="0.3"/>
-  <testcase name="test_addBook{FxRobot}" classname="mvc.viewTest.MainFXTest" time="0.313">
-    <error message="Configuration error: You must configure at least one set of arguments for this @ParameterizedTest" type="org.junit.platform.commons.PreconditionViolationException">org.junit.platform.commons.PreconditionViolationException: Configuration error: You must configure at least one set of arguments for this @ParameterizedTest
-</error>
-  </testcase>
+  <testcase name="invalidDelete{FxRobot}" classname="mvc.viewTest.MainFXTest" time="8.213"/>
+  <testcase name="cancleAdd_invalidAndEmptyInput{FxRobot}" classname="mvc.viewTest.MainFXTest" time="9.964"/>
+  <testcase name="invalidRemoveAndEditCalls{FxRobot}" classname="mvc.viewTest.MainFXTest" time="7.971"/>
+  <testcase name="moreInvalidAdd{FxRobot}" classname="mvc.viewTest.MainFXTest" time="20.013"/>
+  <testcase name="test_editBook{FxRobot}" classname="mvc.viewTest.MainFXTest" time="11.936"/>
+  <testcase name="should_contain_Buttons{FxRobot}" classname="mvc.viewTest.MainFXTest" time="1.307"/>
+  <testcase name="test_deleteBook{FxRobot}" classname="mvc.viewTest.MainFXTest" time="6.973"/>
+  <testcase name="addDuplicate{FxRobot}" classname="mvc.viewTest.MainFXTest" time="10.159"/>
+  <testcase name="cancleEdit_invalidAndEmptyInput{FxRobot}" classname="mvc.viewTest.MainFXTest" time="15.02"/>
+  <testcase name="should_contain_ListView{FxRobot}" classname="mvc.viewTest.MainFXTest" time="1.274"/>
+  <testcase name="test_addBook{FxRobot}" classname="mvc.viewTest.MainFXTest" time="4.348"/>
 </testsuite>

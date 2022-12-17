@@ -108,10 +108,19 @@
       </plugins>
     </pluginManagement>
 
+    
+
     <!-- Code Coverage report generation -->
     <!--  mvn install
           mvn clean jacoco:prepare-agent install jacoco:report -->
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <sourcepath>${project.basedir}/src;${project.basedir}/target/generated-sources/annotations</sourcepath>
+      </configuration>
+    </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>

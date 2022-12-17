@@ -50,8 +50,9 @@ public class MainFX extends Application implements BookManagerObserver {
   @Override
   public void update(BCMessage message) {
     bookList = FXCollections.observableArrayList(message.getBooks());
-    listView.getItems().clear();
-
+    listView = new ListView<>(bookList);
+    listView.setId("lst_books");
+    
     listView.setItems(bookList);
     root.setCenter(listView);
 
@@ -103,8 +104,10 @@ public class MainFX extends Application implements BookManagerObserver {
     editButton.setOnAction(e -> editButtonClicked());
     
     // Disable the buttons if there are no books in the list
-    deleteButton.setDisable(true);
-    editButton.setDisable(true);
+    if (bookList.size() == 0) {
+      deleteButton.setDisable(true);
+      editButton.setDisable(true);
+    }
 
     // Add the buttons to the toolbar
     toolBar.getItems().addAll(addButton, deleteButton, editButton);
