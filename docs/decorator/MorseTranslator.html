@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,7 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">decorator</a></div>
-<h1 title="Class MorseTranslator" class="title">Class MorseTranslator</h1>
+<h1 title="Class MorseTranslator" class="title"><a href="https://github.com/sweng-plus/a7-res-sew22-s1086240_s1054335/blob/main/src/main/java/decorator/MorseTranslator.java">Class MorseTranslator (Github)</a></h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">decorator.MorseTranslator</div>
@@ -89,7 +91,7 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <!-- ========== METHOD SUMMARY =========== -->
 <li>
 <section class="method-summary" id="method-summary">
-<h2>Method Summary</h2>
+<h2>Method and Inner Class Summary</h2>
 <div id="method-summary-table">
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
@@ -119,6 +121,13 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Translates one or more characters into a single character</div>
 </div>
+<!--- INNER CLASS --->
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>Inner Class</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#MorseReaderIC" class="member-name-link">MorseReader</a> extends InputStreamReader</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Inner Class MorseReader</div>
+</div>
+<!-- / INNER CLASS -->
 </div>
 </div>
 </div>
@@ -131,10 +140,53 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 </section>
 <section class="details">
 <ul class="details-list">
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class MorseTranslator implements Translator {
+    private static final int MAXMORSECHARACTERLENGTH = 4;
+    
+    private static MorseTranslator instance = null;
+    private static Map<String, Character> reverseMorse = new LinkedHashMap<String, Character>();
+    
+    private MorseTranslator(){
+        reverseMorse = new LinkedHashMap<String, Character>();
+    
+        reverseMorse.put(".-",  'a');
+        reverseMorse.put("-...",'b');
+        reverseMorse.put("-.-.",'c');
+        reverseMorse.put("-..", 'd');
+        reverseMorse.put(".",   'e');
+        reverseMorse.put("..-.",'f');
+        reverseMorse.put("--.", 'g');
+        reverseMorse.put("....",'h');
+        reverseMorse.put("..",  'i');
+        reverseMorse.put(".---",'j');
+        reverseMorse.put("-.-", 'k');
+        reverseMorse.put(".-..",'l');
+        reverseMorse.put("--",  'm');
+        reverseMorse.put("-.",  'n');
+        reverseMorse.put("---", 'o');
+        reverseMorse.put(".--.",'p');
+        reverseMorse.put("--.-",'q');
+        reverseMorse.put(".-.", 'r');
+        reverseMorse.put("...", 's');
+        reverseMorse.put("-",   't');
+        reverseMorse.put("..-", 'u');
+        reverseMorse.put("...-",'v');
+        reverseMorse.put(".--", 'w');
+        reverseMorse.put("-..-",'x');
+        reverseMorse.put("-.--",'y');
+        reverseMorse.put("--..",'z');
+    }
+
+    (...)
+}
+</code></pre>
+<!--CODE END-->
 <!-- ============ METHOD DETAIL ========== -->
 <li>
 <section class="method-details" id="method-detail">
-<h2>Method Details</h2>
+<h2>Method and Inner Class Details</h2>
 <ul class="member-list">
 <li>
 <section class="detail" id="translate(char[],int,int)">
@@ -154,6 +206,19 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <dt>Returns:</dt>
 <dd>the translated character</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public Character translate(char[] cs, int fromIndex, int untilIndex) {
+	String morse = "";
+	for(int i = fromIndex; i < untilIndex; i++){
+		morse += cs[i];
+	}
+
+	return reverseMorse.getOrDefault(morse, null);
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -161,6 +226,16 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <h3>getInstance</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="MorseTranslator.html" title="class in decorator">MorseTranslator</a></span>&nbsp;<span class="element-name">getInstance</span>()</div>
 <div class="block">Returns the singleton instance of MorseTranslator</div>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public static MorseTranslator getInstance(){
+	if(instance == null){
+		instance = new MorseTranslator();
+	}
+	return instance;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -174,6 +249,18 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <dt>Returns:</dt>
 <dd>reader or null if there is a problem</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Reader getReader(File file2read){ 
+	try {
+		return new MorseReader(this, file2read);
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	}
+	return null;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -187,6 +274,101 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <dt>Returns:</dt>
 <dd>reader</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Reader getReader(String string2read){
+    return new MorseReader(this, string2read);
+}
+</code></pre>
+<!--CODE END-->
+</section>
+</li>
+<li>
+<section class="detail" id="MorseReaderIC">
+<h3>MorseReader [Inner Class]</h3>
+<div class="member-signature"><span class="modifiers">private</span> MorseReader extends InputStreamReader</div>
+<div class="block">Class for handling read operations</div>
+<dl class="notes">
+</dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+private class MorseReader extends InputStreamReader{
+	private Translator translator;
+	private boolean bufferedEndOfMorseCodeWord; 
+
+	public MorseReader(Translator translator, File file2read) throws FileNotFoundException{
+		super(new FileInputStream(file2read));
+
+		this.translator = translator;
+		this.bufferedEndOfMorseCodeWord = false;
+	}
+
+	public MorseReader(Translator translator, String string2read){
+		super(new ByteArrayInputStream(string2read.getBytes()));
+
+		this.translator = translator;
+		this.bufferedEndOfMorseCodeWord = false;
+	}
+
+	@Override
+	public int read(char[] cbuf, int off, int len) throws IOException {
+		if(off < 0 || len < 0 || len > cbuf.length - off)
+			throw new IndexOutOfBoundsException();
+
+		if(len == 0)
+			return 0;
+			
+		int readChars = 0;		//index for alphanumeric chars
+		int c;					//current char from Stream
+		int readMorseChars = 0;	//index for morse chars
+
+		char[] morsebuffer = new char[MAXMORSECHARACTERLENGTH];
+
+		while(readChars < len){
+			if(bufferedEndOfMorseCodeWord){			//true if '|' was read before
+				cbuf[off + readChars++] = ' ';
+				bufferedEndOfMorseCodeWord = false;
+				continue;
+			}
+
+			while((c = super.read()) != -1){
+				if((char)c == ' ')		//end of morse char
+					break;
+
+				if((char)c == '|'){		//end of morse word
+					bufferedEndOfMorseCodeWord = true;
+					break;
+				}
+
+				morsebuffer[readMorseChars++] = (char)c;
+			};
+
+			if(c == -1 && readMorseChars == 0){			//end of stream
+				return readChars == 0 ? -1 : readChars;
+			}
+			else{
+				cbuf[off + readChars++] = translator.translate(morsebuffer, 0, readMorseChars);
+				readMorseChars = 0;	//reset index from morsebuffer
+			}	
+		}
+
+		return readChars == 0 ? -1 : readChars;
+	}
+
+	@Override
+	public int read() throws IOException {
+		char[] buffer = new char[1];
+
+		return this.read(buffer, 0, 1) == -1 ? -1 : buffer[0];
+	}
+
+	@Override
+	public int read(char[] cbuf) throws IOException {
+		return this.read(cbuf, 0, cbuf.length);
+	}
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 </ul>

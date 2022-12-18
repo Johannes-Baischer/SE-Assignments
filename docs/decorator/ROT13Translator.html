@@ -14,6 +14,8 @@
 <script type="text/javascript" src="../script.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../script-dir/jquery-ui.min.js"></script>
+<!-- JAVA HIGHLIGHTING -->
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
@@ -68,7 +70,7 @@ loadScripts(document, 'script');</script>
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">decorator</a></div>
-<h1 title="Class ROT13Translator" class="title">Class ROT13Translator</h1>
+<h1 title="Class ROT13Translator" class="title"><a href="https://github.com/sweng-plus/a7-res-sew22-s1086240_s1054335/blob/main/src/main/java/decorator/ROT13Translator.java">Class ROT13Translator (Github)</a></h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">decorator.ROT13Translator</div>
@@ -89,7 +91,7 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <!-- ========== METHOD SUMMARY =========== -->
 <li>
 <section class="method-summary" id="method-summary">
-<h2>Method Summary</h2>
+<h2>Method and Inner Class Summary</h2>
 <div id="method-summary-table">
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
@@ -119,6 +121,20 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Translates one or more characters into a single character</div>
 </div>
+<!--- INNER CLASS --->
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>Inner Class</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#MorseWriterIC" class="member-name-link">MorseWriter</a> extends OutputStreamWriter</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Inner Class MorseReader</div>
+</div>
+<!-- / INNER CLASS -->
+<!--- INNER CLASS --->
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>Inner Class</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#StringOutputStream" class="member-name-link">StringOutputStream</a> extends OutputStream</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Inner Class StringOutputStream</div>
+</div>
+<!-- / INNER CLASS -->
 </div>
 </div>
 </div>
@@ -131,10 +147,26 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 </section>
 <section class="details">
 <ul class="details-list">
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public class ROT13Translator implements Translator {
+    private static final int LOWERCASEA = (int)'a';
+    private static final int LOWERCASEZ = (int)'z';
+    private static final int UPPERCASEA = (int)'A';
+    private static final int UPPERCASEZ = (int)'Z';
+    
+    private static ROT13Translator instance = null;
+    
+    private ROT13Translator(){}
+
+    (...)
+}
+</code></pre>
+<!--CODE END-->
 <!-- ============ METHOD DETAIL ========== -->
 <li>
 <section class="method-details" id="method-detail">
-<h2>Method Details</h2>
+<h2>Method and Inner Class Details</h2>
 <ul class="member-list">
 <li>
 <section class="detail" id="translate(char[],int,int)">
@@ -154,6 +186,27 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <dt>Returns:</dt>
 <dd>the translated character</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+@Override
+public Character translate(char[] cs, int fromIndex, int untilIndex) {
+	char[] ROT13s = new char[cs.length];
+	for(int i = fromIndex; i < untilIndex; i++){
+		if(LOWERCASEA <= cs[i] && cs[i] <= LOWERCASEZ){
+			ROT13s[i] = (char)(LOWERCASEA + ((((int)cs[i] - LOWERCASEA) + 13) % 26));
+		}
+		else if(UPPERCASEA <= cs[i] && cs[i] <= UPPERCASEZ){
+			ROT13s[i] = (char)(UPPERCASEA + ((((int)cs[i] - UPPERCASEA) + 13) % 26));
+		}
+		else{
+			ROT13s[i] = cs[i];
+		}
+	}
+
+	return ROT13s[fromIndex];	//why give implementation for translation whole array, if there can only be one charater returned?
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -165,6 +218,16 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <dt>Returns:</dt>
 <dd>instance of ROT13Translator</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public static ROT13Translator getInstance(){
+	if(instance == null){
+		instance = new ROT13Translator();
+	}
+	return instance;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -178,6 +241,18 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <dt>Returns:</dt>
 <dd>writer or null if there is a problem</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Writer getWriter(File file2write){ 
+	try {
+		return new MorseWriter(this, file2write);
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	}
+	return null;
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
 <li>
@@ -189,8 +264,113 @@ implements <a href="Translator.html" title="interface in decorator">Translator</
 <dt>Returns:</dt>
 <dd>writer</dd>
 </dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+public Writer getWriter(){
+    return new MorseWriter(this, new StringBuilder());
+}
+</code></pre>
+<!--CODE END-->
 </section>
 </li>
+
+<!-------------------------- INNER CLASS --------------------------->
+<li>
+<section class="detail" id="MorseWriterIC">
+<h3>MorseWriter [Inner Class]</h3>
+<div class="member-signature"><span class="modifiers">private</span> MorseWriter extends OutputStreamWriter</div>
+<div class="block">Class for handling write operations</div>
+<dl class="notes">
+</dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+private class MorseWriter extends OutputStreamWriter{
+	private Translator translator;
+	private StringBuilder outputString;
+
+	public MorseWriter(Translator translator, File file2Write) throws FileNotFoundException{
+		super(new FileOutputStream(file2Write));
+
+		this.translator = translator;
+	}
+
+	public MorseWriter(Translator translator, StringBuilder sb){
+		super(new StringOutputStream(sb));
+		outputString = sb;
+
+		this.translator = translator;
+	}
+
+	@Override
+	public void write(char[] cbuf, int off, int len) throws IOException {
+		if(off < 0 || len < 0 || len > cbuf.length - off)
+			throw new IndexOutOfBoundsException();
+
+		for(int i = off; i < off + len; i++){
+			super.write(translator.translate(cbuf, i, i + 1));
+		}
+		super.flush();	//empties the buffer and writes to destination
+	}
+
+	@Override
+	public void write(int c) throws IOException {
+		this.write(new char[]{(char)c}, 0, 1);
+	}
+
+	@Override
+	public void write(String str, int off, int len) throws IOException {
+		this.write(str.toCharArray(), off, len);
+	}
+
+	@Override
+	public void write(String str) throws IOException {
+		this.write(str.toCharArray(), 0, str.length());
+	}
+
+	@Override
+	public void write(char[] cbuf) throws IOException {
+		this.write(cbuf, 0, cbuf.length);
+	}
+
+	@Override
+	public String toString(){
+		return outputString.toString();
+	}
+}
+</code></pre>
+<!--CODE END-->
+</section>
+</li>
+<!------------------------- / INNER CLASS -------------------------->
+
+<!-------------------------- INNER CLASS --------------------------->
+<li>
+<section class="detail" id="StringOutputStream">
+<h3>StringOutputStream [Inner Class]</h3>
+<div class="member-signature"><span class="modifiers">private</span> StringOutputStream extends OutputStream</div>
+<div class="block">Outputstream with underlying StringBuilder</div>
+<dl class="notes">
+</dl>
+<!--CODE START-->
+<pre class="prettyprint"><code class="language-java">
+private class StringOutputStream extends OutputStream{
+	private StringBuilder sb;
+
+	public StringOutputStream(StringBuilder sb){
+		this.sb = sb;
+	}
+
+	@Override
+	public void write(int b) throws IOException {
+		sb.append((char)b);
+	}
+}
+</code></pre>
+<!--CODE END-->
+</section>
+</li>
+<!------------------------- / INNER CLASS -------------------------->
+
 </ul>
 </section>
 </li>
