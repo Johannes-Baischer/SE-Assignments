@@ -42,5 +42,29 @@ public class BookManagerController {
     public void addObserver(BookManagerObserver observer) {
 <span class="fc" id="L43">        bookManager.addObserver(observer);</span>
 <span class="fc" id="L44">    }</span>
+
+        /**
+     * Check if the input from the dialog is valid
+     * @param title 
+     * @param author
+     * @param year
+     * @param isbn
+     * @return 0 if the input is valid, -1 if one of the fields is empty, -2 if the year is not a number
+     */
+    public int checkDialogInput(String title, String author, String year, String isbn) {
+    // Check if the input is valid
+<span class="fc bfc" id="L56" title="All 8 branches covered.">        if (title.isEmpty() || author.isEmpty() || year.isEmpty() || isbn.isEmpty()) {</span>
+<span class="fc" id="L57">            return -1;</span>
+        }
+
+        // Check if the year is a number
+        try {
+<span class="fc" id="L62">            Integer.parseInt(year);</span>
+<span class="fc" id="L63">        } catch (NumberFormatException e) {</span>
+<span class="fc" id="L64">        return -2;</span>
+<span class="fc" id="L65">        }</span>
+
+<span class="fc" id="L67">        return 0;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

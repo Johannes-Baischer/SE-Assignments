@@ -166,175 +166,173 @@ import mvc.controller.BookManagerObserver;
 <span class="fc" id="L166">    String isbn = isbnField.getText();</span>
 
     // Check if the input is valid
-<span class="fc bfc" id="L169" title="All 2 branches covered.">    if (checkDialogInput(title, author, year, isbn) == false) {</span>
-<span class="fc" id="L170">        return;</span>
+<span class="fc bfc" id="L169" title="All 3 branches covered.">    switch(controller.checkDialogInput(title, author, year, isbn))</span>
+    {
+        case -1:
+<span class="fc" id="L172">          Alert alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L173">          alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L174">          alert.setHeaderText(&quot;Add-Error:&quot;);</span>
+<span class="fc" id="L175">          alert.setContentText(&quot;Fields must be non empty!&quot;);</span>
+<span class="fc" id="L176">          alert.showAndWait();</span>
+
+<span class="fc" id="L178">          return;</span>
+
+        case -2:
+<span class="fc" id="L181">          alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L182">          alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L183">          alert.setHeaderText(&quot;Add-Error:&quot;);</span>
+<span class="fc" id="L184">          alert.setContentText(&quot;Invalid year!&quot;);</span>
+<span class="fc" id="L185">          alert.showAndWait();</span>
+
+<span class="fc" id="L187">          return;</span>
     }
 
     // Add the book to the model
-<span class="fc bfc" id="L174" title="All 2 branches covered.">    if(controller.addBook(title, author, year, isbn) == false){</span>
-<span class="fc" id="L175">        Alert alert = new Alert(AlertType.INFORMATION);</span>
-<span class="fc" id="L176">        alert.setTitle(&quot;Information&quot;);</span>
-<span class="fc" id="L177">        alert.setHeaderText(&quot;Add-Error:&quot;);</span>
-<span class="fc" id="L178">        alert.setContentText(&quot;Book already exists!&quot;);</span>
-<span class="fc" id="L179">        alert.showAndWait();</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">    if(controller.addBook(title, author, year, isbn) == false){</span>
+<span class="fc" id="L192">        Alert alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L193">        alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L194">        alert.setHeaderText(&quot;Add-Error:&quot;);</span>
+<span class="fc" id="L195">        alert.setContentText(&quot;Book already exists!&quot;);</span>
+<span class="fc" id="L196">        alert.showAndWait();</span>
     }
-<span class="fc" id="L181">  }</span>
+<span class="fc" id="L198">  }</span>
 
   /**
    * Handler for the Delete button
    */
   private void deleteButtonClicked() {
-<span class="fc" id="L187">    TextInputDialog dialog = new TextInputDialog();</span>
-<span class="fc" id="L188">    dialog.setHeaderText(&quot;Enter ISBN of Book to Delete&quot;);</span>
-<span class="fc" id="L189">    dialog.setTitle(&quot;Delete Book&quot;);</span>
+<span class="fc" id="L204">    TextInputDialog dialog = new TextInputDialog();</span>
+<span class="fc" id="L205">    dialog.setHeaderText(&quot;Enter ISBN of Book to Delete&quot;);</span>
+<span class="fc" id="L206">    dialog.setTitle(&quot;Delete Book&quot;);</span>
 
     // Set the input fields to the selected book's info
-<span class="fc" id="L192">    Book selectedBook = listView.getSelectionModel().getSelectedItem();</span>
-<span class="fc bfc" id="L193" title="All 2 branches covered.">    if(selectedBook == null){</span>
-<span class="fc" id="L194">        Alert alert = new Alert(AlertType.INFORMATION);</span>
-<span class="fc" id="L195">        alert.setTitle(&quot;Information&quot;);</span>
-<span class="fc" id="L196">        alert.setHeaderText(&quot;No book selected&quot;);</span>
-<span class="fc" id="L197">        alert.setContentText(&quot;No book selected&quot;);</span>
-<span class="fc" id="L198">        alert.showAndWait();</span>
-<span class="fc" id="L199">        return;</span>
+<span class="fc" id="L209">    Book selectedBook = listView.getSelectionModel().getSelectedItem();</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">    if(selectedBook == null){</span>
+<span class="fc" id="L211">        Alert alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L212">        alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L213">        alert.setHeaderText(&quot;No book selected&quot;);</span>
+<span class="fc" id="L214">        alert.setContentText(&quot;No book selected&quot;);</span>
+<span class="fc" id="L215">        alert.showAndWait();</span>
+<span class="fc" id="L216">        return;</span>
     }
     
 
     // Get the input from the fields
-<span class="fc" id="L204">    String isbn = selectedBook.getIsbn();</span>
+<span class="fc" id="L221">    String isbn = selectedBook.getIsbn();</span>
 
     // Add the book to the model
-<span class="fc bfc" id="L207" title="All 2 branches covered.">    if(controller.removeBook(isbn) == false){</span>
-<span class="fc" id="L208">        Alert alert = new Alert(AlertType.INFORMATION);</span>
-<span class="fc" id="L209">        alert.setTitle(&quot;Information&quot;);</span>
-<span class="fc" id="L210">        alert.setHeaderText(&quot;Delete-Error:&quot;);</span>
-<span class="fc" id="L211">        alert.setContentText(&quot;Book does not exist!&quot;);</span>
-<span class="fc" id="L212">        alert.showAndWait();</span>
+<span class="fc bfc" id="L224" title="All 2 branches covered.">    if(controller.removeBook(isbn) == false){</span>
+<span class="fc" id="L225">        Alert alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L226">        alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L227">        alert.setHeaderText(&quot;Delete-Error:&quot;);</span>
+<span class="fc" id="L228">        alert.setContentText(&quot;Book does not exist!&quot;);</span>
+<span class="fc" id="L229">        alert.showAndWait();</span>
     }
-<span class="fc" id="L214">  }</span>
+<span class="fc" id="L231">  }</span>
 
   /**
    * Handler for the Edit button
    */
   private void editButtonClicked() {
-<span class="fc" id="L220">    TextInputDialog dialog = new TextInputDialog();</span>
-<span class="fc" id="L221">    dialog.setHeaderText(&quot;Edit Book Info&quot;);</span>
-<span class="fc" id="L222">    dialog.setTitle(&quot;Book Entry&quot;);</span>
+<span class="fc" id="L237">    TextInputDialog dialog = new TextInputDialog();</span>
+<span class="fc" id="L238">    dialog.setHeaderText(&quot;Edit Book Info&quot;);</span>
+<span class="fc" id="L239">    dialog.setTitle(&quot;Book Entry&quot;);</span>
 
     // Create the input fields
-<span class="fc" id="L225">    TextField titleField = new TextField();</span>
-<span class="fc" id="L226">    TextField authorField = new TextField();</span>
-<span class="fc" id="L227">    TextField yearField = new TextField();</span>
-<span class="fc" id="L228">    TextField isbnField = new TextField();</span>
+<span class="fc" id="L242">    TextField titleField = new TextField();</span>
+<span class="fc" id="L243">    TextField authorField = new TextField();</span>
+<span class="fc" id="L244">    TextField yearField = new TextField();</span>
+<span class="fc" id="L245">    TextField isbnField = new TextField();</span>
 
     // Set id's for the fields
-<span class="fc" id="L231">    titleField.setId(&quot;txt_title&quot;);</span>
-<span class="fc" id="L232">    authorField.setId(&quot;txt_author&quot;);</span>
-<span class="fc" id="L233">    yearField.setId(&quot;txt_year&quot;);</span>
-<span class="fc" id="L234">    isbnField.setId(&quot;txt_isbn&quot;);</span>
+<span class="fc" id="L248">    titleField.setId(&quot;txt_title&quot;);</span>
+<span class="fc" id="L249">    authorField.setId(&quot;txt_author&quot;);</span>
+<span class="fc" id="L250">    yearField.setId(&quot;txt_year&quot;);</span>
+<span class="fc" id="L251">    isbnField.setId(&quot;txt_isbn&quot;);</span>
 
     // Set the prompt text
-<span class="fc" id="L237">    titleField.setPromptText(&quot;Title&quot;);</span>
-<span class="fc" id="L238">    authorField.setPromptText(&quot;Author&quot;);</span>
-<span class="fc" id="L239">    yearField.setPromptText(&quot;Year&quot;);</span>
-<span class="fc" id="L240">    isbnField.setPromptText(&quot;ISBN&quot;);</span>
+<span class="fc" id="L254">    titleField.setPromptText(&quot;Title&quot;);</span>
+<span class="fc" id="L255">    authorField.setPromptText(&quot;Author&quot;);</span>
+<span class="fc" id="L256">    yearField.setPromptText(&quot;Year&quot;);</span>
+<span class="fc" id="L257">    isbnField.setPromptText(&quot;ISBN&quot;);</span>
 
     // Set the input fields to the selected book's info
-<span class="fc" id="L243">    Book selectedBook = listView.getSelectionModel().getSelectedItem();</span>
-<span class="fc bfc" id="L244" title="All 2 branches covered.">    if(selectedBook == null){</span>
-<span class="fc" id="L245">        Alert alert = new Alert(AlertType.INFORMATION);</span>
-<span class="fc" id="L246">        alert.setTitle(&quot;Information&quot;);</span>
-<span class="fc" id="L247">        alert.setHeaderText(&quot;No book selected&quot;);</span>
-<span class="fc" id="L248">        alert.setContentText(&quot;No book selected&quot;);</span>
-<span class="fc" id="L249">        alert.showAndWait();</span>
-<span class="fc" id="L250">        return;</span>
+<span class="fc" id="L260">    Book selectedBook = listView.getSelectionModel().getSelectedItem();</span>
+<span class="fc bfc" id="L261" title="All 2 branches covered.">    if(selectedBook == null){</span>
+<span class="fc" id="L262">        Alert alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L263">        alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L264">        alert.setHeaderText(&quot;No book selected&quot;);</span>
+<span class="fc" id="L265">        alert.setContentText(&quot;No book selected&quot;);</span>
+<span class="fc" id="L266">        alert.showAndWait();</span>
+<span class="fc" id="L267">        return;</span>
     }
 
-<span class="fc" id="L253">    titleField.setText(selectedBook.getTitle());</span>
-<span class="fc" id="L254">    authorField.setText(selectedBook.getAuthor());</span>
-<span class="fc" id="L255">    yearField.setText(selectedBook.getYear());</span>
-<span class="fc" id="L256">    isbnField.setText(selectedBook.getIsbn());</span>
-<span class="fc" id="L257">    String oldIsbn = selectedBook.getIsbn();</span>
+<span class="fc" id="L270">    titleField.setText(selectedBook.getTitle());</span>
+<span class="fc" id="L271">    authorField.setText(selectedBook.getAuthor());</span>
+<span class="fc" id="L272">    yearField.setText(selectedBook.getYear());</span>
+<span class="fc" id="L273">    isbnField.setText(selectedBook.getIsbn());</span>
+<span class="fc" id="L274">    String oldIsbn = selectedBook.getIsbn();</span>
 
     // Add the fields to the dialog
-<span class="fc" id="L260">    GridPane grid = new GridPane();</span>
-<span class="fc" id="L261">    grid.add(titleField, 1, 1);</span>
-<span class="fc" id="L262">    grid.add(authorField, 1, 2);</span>
-<span class="fc" id="L263">    grid.add(yearField, 1, 3);</span>
-<span class="fc" id="L264">    grid.add(isbnField, 1, 4);</span>
-<span class="fc" id="L265">    dialog.getDialogPane().setContent(grid);</span>
+<span class="fc" id="L277">    GridPane grid = new GridPane();</span>
+<span class="fc" id="L278">    grid.add(titleField, 1, 1);</span>
+<span class="fc" id="L279">    grid.add(authorField, 1, 2);</span>
+<span class="fc" id="L280">    grid.add(yearField, 1, 3);</span>
+<span class="fc" id="L281">    grid.add(isbnField, 1, 4);</span>
+<span class="fc" id="L282">    dialog.getDialogPane().setContent(grid);</span>
 
     // returns null if the user cancels the dialog
-<span class="fc bfc" id="L268" title="All 2 branches covered.">    if (dialog.showAndWait().orElse(null) == null) {</span>
-<span class="fc" id="L269">        return;</span>
+<span class="fc bfc" id="L285" title="All 2 branches covered.">    if (dialog.showAndWait().orElse(null) == null) {</span>
+<span class="fc" id="L286">        return;</span>
     }
     
 
     // Get the input from the fields
-<span class="fc" id="L274">    String title = titleField.getText();</span>
-<span class="fc" id="L275">    String author = authorField.getText();</span>
-<span class="fc" id="L276">    String year = yearField.getText();</span>
-<span class="fc" id="L277">    String isbn = isbnField.getText();</span>
+<span class="fc" id="L291">    String title = titleField.getText();</span>
+<span class="fc" id="L292">    String author = authorField.getText();</span>
+<span class="fc" id="L293">    String year = yearField.getText();</span>
+<span class="fc" id="L294">    String isbn = isbnField.getText();</span>
 
     // Check if the input is valid
-<span class="fc bfc" id="L280" title="All 2 branches covered.">    if (checkDialogInput(title, author, year, isbn) == false) {</span>
-<span class="fc" id="L281">        return;</span>
+<span class="pc bpc" id="L297" title="1 of 3 branches missed.">    switch(controller.checkDialogInput(title, author, year, isbn))</span>
+    {
+        case -1:
+<span class="fc" id="L300">          Alert alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L301">          alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L302">          alert.setHeaderText(&quot;Add-Error:&quot;);</span>
+<span class="fc" id="L303">          alert.setContentText(&quot;Fields must be non empty!&quot;);</span>
+<span class="fc" id="L304">          alert.showAndWait();</span>
+
+<span class="fc" id="L306">          return;</span>
+
+        case -2:
+<span class="nc" id="L309">          alert = new Alert(AlertType.INFORMATION);</span>
+<span class="nc" id="L310">          alert.setTitle(&quot;Information&quot;);</span>
+<span class="nc" id="L311">          alert.setHeaderText(&quot;Add-Error:&quot;);</span>
+<span class="nc" id="L312">          alert.setContentText(&quot;Invalid year!&quot;);</span>
+<span class="nc" id="L313">          alert.showAndWait();</span>
+
+<span class="nc" id="L315">          return;</span>
     }
+    
 
     // Add the book to the model
-<span class="fc bfc" id="L285" title="All 2 branches covered.">    if(controller.editBook(oldIsbn, title, author, year, isbn) == false){</span>
-<span class="fc" id="L286">        Alert alert = new Alert(AlertType.INFORMATION);</span>
-<span class="fc" id="L287">        alert.setTitle(&quot;Information&quot;);</span>
-<span class="fc" id="L288">        alert.setHeaderText(&quot;Book not found&quot;);</span>
-<span class="fc" id="L289">        alert.setContentText(&quot;Book not found&quot;);</span>
-<span class="fc" id="L290">        alert.showAndWait();</span>
+<span class="fc bfc" id="L320" title="All 2 branches covered.">    if(controller.editBook(oldIsbn, title, author, year, isbn) == false){</span>
+<span class="fc" id="L321">        Alert alert = new Alert(AlertType.INFORMATION);</span>
+<span class="fc" id="L322">        alert.setTitle(&quot;Information&quot;);</span>
+<span class="fc" id="L323">        alert.setHeaderText(&quot;Book not found&quot;);</span>
+<span class="fc" id="L324">        alert.setContentText(&quot;Book not found&quot;);</span>
+<span class="fc" id="L325">        alert.showAndWait();</span>
     }
-<span class="fc" id="L292">  }</span>
-
-
-  
-  /**
-   * Check if the input from the dialog is valid
-   * @param title 
-   * @param author
-   * @param year
-   * @param isbn
-   * @return true if the input is valid, false otherwise
-   */
-  private boolean checkDialogInput(String title, String author, String year, String isbn) {
-    // Check if the input is valid
-<span class="fc bfc" id="L306" title="All 8 branches covered.">    if (title.isEmpty() || author.isEmpty() || year.isEmpty() || isbn.isEmpty()) {</span>
-<span class="fc" id="L307">      Alert alert = new Alert(AlertType.INFORMATION);</span>
-<span class="fc" id="L308">      alert.setTitle(&quot;Information&quot;);</span>
-<span class="fc" id="L309">      alert.setHeaderText(&quot;Add-Error:&quot;);</span>
-<span class="fc" id="L310">      alert.setContentText(&quot;Fields must be non empty!&quot;);</span>
-<span class="fc" id="L311">      alert.showAndWait();</span>
-
-<span class="fc" id="L313">      return false;</span>
-    }
-
-    // Check if the year is a number
-    try {
-<span class="fc" id="L318">        Integer.parseInt(year);</span>
-<span class="fc" id="L319">    } catch (NumberFormatException e) {</span>
-<span class="fc" id="L320">      Alert alert = new Alert(AlertType.INFORMATION);</span>
-<span class="fc" id="L321">      alert.setTitle(&quot;Information&quot;);</span>
-<span class="fc" id="L322">      alert.setHeaderText(&quot;Add-Error:&quot;);</span>
-<span class="fc" id="L323">      alert.setContentText(&quot;Invalid year!&quot;);</span>
-<span class="fc" id="L324">      alert.showAndWait();</span>
-<span class="fc" id="L325">      return false;</span>
-<span class="fc" id="L326">    }</span>
-
-<span class="fc" id="L328">    return true;</span>
-  }
+<span class="fc" id="L327">  }</span>
 
   /**
    * Add the ListView to the center of the root pane
    * @param root the root pane
    */
   private void addListView(BorderPane root) {
-<span class="fc" id="L336">    root.setCenter(listView);</span>
-<span class="fc" id="L337">  }</span>
+<span class="fc" id="L334">    root.setCenter(listView);</span>
+<span class="fc" id="L335">  }</span>
 
   /**
    * Create the scene and show the stage
@@ -342,8 +340,8 @@ import mvc.controller.BookManagerObserver;
    * @param root the root pane
    */
   private void createScene(Stage stage, BorderPane root) {
-<span class="fc" id="L345">    createScene(stage, root, 1200, 720);</span>
-<span class="fc" id="L346">  }</span>
+<span class="fc" id="L343">    createScene(stage, root, 1200, 720);</span>
+<span class="fc" id="L344">  }</span>
 
   /**
    * Create the scene and show the stage
@@ -353,10 +351,10 @@ import mvc.controller.BookManagerObserver;
    * @param height the height of the scene
    */
   private void createScene(Stage stage, BorderPane root, int width, int height) {
-<span class="fc" id="L356">    Scene scene = new Scene(root, width, height);</span>
-<span class="fc" id="L357">    stage.setScene(scene);</span>
-<span class="fc" id="L358">    stage.show();</span>
-<span class="fc" id="L359">  }</span>
+<span class="fc" id="L354">    Scene scene = new Scene(root, width, height);</span>
+<span class="fc" id="L355">    stage.setScene(scene);</span>
+<span class="fc" id="L356">    stage.show();</span>
+<span class="fc" id="L357">  }</span>
   //--------------------------------------------------------------------------------
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -166,8 +166,25 @@ public class MainFX extends Application implements BookManagerObserver {
     String isbn = isbnField.getText();
 
     // Check if the input is valid
-    if (checkDialogInput(title, author, year, isbn) == false) {
-        return;
+    switch(controller.checkDialogInput(title, author, year, isbn))
+    {
+        case -1:
+          Alert alert = new Alert(AlertType.INFORMATION);
+          alert.setTitle("Information");
+          alert.setHeaderText("Add-Error:");
+          alert.setContentText("Fields must be non empty!");
+          alert.showAndWait();
+
+          return;
+
+        case -2:
+          alert = new Alert(AlertType.INFORMATION);
+          alert.setTitle("Information");
+          alert.setHeaderText("Add-Error:");
+          alert.setContentText("Invalid year!");
+          alert.showAndWait();
+
+          return;
     }
 
     // Add the book to the model
@@ -277,9 +294,27 @@ public class MainFX extends Application implements BookManagerObserver {
     String isbn = isbnField.getText();
 
     // Check if the input is valid
-    if (checkDialogInput(title, author, year, isbn) == false) {
-        return;
+    switch(controller.checkDialogInput(title, author, year, isbn))
+    {
+        case -1:
+          Alert alert = new Alert(AlertType.INFORMATION);
+          alert.setTitle("Information");
+          alert.setHeaderText("Add-Error:");
+          alert.setContentText("Fields must be non empty!");
+          alert.showAndWait();
+
+          return;
+
+        case -2:
+          alert = new Alert(AlertType.INFORMATION);
+          alert.setTitle("Information");
+          alert.setHeaderText("Add-Error:");
+          alert.setContentText("Invalid year!");
+          alert.showAndWait();
+
+          return;
     }
+    
 
     // Add the book to the model
     if(controller.editBook(oldIsbn, title, author, year, isbn) == false){
@@ -289,43 +324,6 @@ public class MainFX extends Application implements BookManagerObserver {
         alert.setContentText("Book not found");
         alert.showAndWait();
     }
-  }
-
-
-  
-  /**
-   * Check if the input from the dialog is valid
-   * @param title 
-   * @param author
-   * @param year
-   * @param isbn
-   * @return true if the input is valid, false otherwise
-   */
-  private boolean checkDialogInput(String title, String author, String year, String isbn) {
-    // Check if the input is valid
-    if (title.isEmpty() || author.isEmpty() || year.isEmpty() || isbn.isEmpty()) {
-      Alert alert = new Alert(AlertType.INFORMATION);
-      alert.setTitle("Information");
-      alert.setHeaderText("Add-Error:");
-      alert.setContentText("Fields must be non empty!");
-      alert.showAndWait();
-
-      return false;
-    }
-
-    // Check if the year is a number
-    try {
-        Integer.parseInt(year);
-    } catch (NumberFormatException e) {
-      Alert alert = new Alert(AlertType.INFORMATION);
-      alert.setTitle("Information");
-      alert.setHeaderText("Add-Error:");
-      alert.setContentText("Invalid year!");
-      alert.showAndWait();
-      return false;
-    }
-
-    return true;
   }
 
   /**
