@@ -1,0 +1,104 @@
+{
+  "tests": [
+    {
+      "name": "Reader, testMorse_2",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainReaderTest#testMorse_2 test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+	    {
+      "name": "Reader, testMorseRand",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainReaderTest#testMorseRand test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+	{
+      "name": "Reader, testRead2Array",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainReaderTest#testRead2Array test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+	{
+      "name": "Reader, testReady",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainReaderTest#testReady test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+	{
+      "name": "Reader, testClose",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainReaderTest#testClose test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+	{
+      "name": "Reader, testSingleton",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainReaderTest#testSingleton test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Writer, testROT13_2",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainWriterTest#testROT13_2 test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Writer, testWriteFromArray",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainWriterTest#testWriteFromArray test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Writer, testROT13 Offset/Len",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainWriterTest#testROT13Off+testROT13Len+testROT13OffLen test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Writer, testSingleton",
+      "setup": "mvn compile",
+      "run": "mvn -Dtest=Remote_MRMainWriterTest#testSingleton test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
