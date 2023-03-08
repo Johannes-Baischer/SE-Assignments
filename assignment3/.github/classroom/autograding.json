@@ -1,0 +1,114 @@
+{
+  "tests": [
+    {
+      "name": "test registerCustomer",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testRegisterCustomer test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test getCustomers",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testGetCustomers test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test removeAccount",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testRemoveAccount test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 0
+    },
+    {
+      "name": "test registerCorporateAccount",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testRegisterCorporateAccount test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test registerPersonalAccount",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testRegisterPersonalAccount test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test getBalance",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testGetBalance test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test deposit",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testDeposit test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test depositANDWithdraw",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testDepositANDWithdraw test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test transfer",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testRegisterCustomer test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },	
+    {
+      "name": "test getAccounts",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testGetAccounts test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    },
+    {
+      "name": "test getTotalBalance",
+      "setup": "mvn dependency:unpack",
+      "run": "mvn -Dtest=BankTest#testGetTotalBalance test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 3,
+      "points": 1
+    }
+  ]
+}
